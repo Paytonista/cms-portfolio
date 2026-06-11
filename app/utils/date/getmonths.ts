@@ -1,0 +1,7 @@
+import { start } from "repl";
+
+export function getMonthDifference (startDate: Date, endDate : Date) {
+    return (
+        (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth())
+    );
+};
