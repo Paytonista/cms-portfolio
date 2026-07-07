@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, Fragment} from "react";
 import TechCard , {TechCardProps}from "@/app/components/TechCard";
+
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 interface ProjectCardProps {
   onClick?: () => void;
@@ -55,23 +57,26 @@ const ProjectCard = ({
           }}
           className="absolute inset-0 bg-black opacity-50"
         ></div>
+        
 
         {tooltip_images.map((src) => (
-          <img
-            key={tooltip_images[currentIndex]}
-            src={src}
-            className="max-w-md aspect-video border"
-          />
-          {tooltip_images.length > 1 && (
+          <Fragment key={src}>
+            <img
+                src={src}
+                className="max-w-md aspect-video border"
+            />
+            {tooltip_images.length > 1 && (
             <>
+            
+              
+              
             </>
-
-            )
-          }
+            )}
+ 
           
-            )
-          )
-        }
+          </Fragment>
+          ) 
+        )}
 
         
       </div>

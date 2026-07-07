@@ -1,8 +1,5 @@
 import { prisma } from "@/lib/prisma";
 
-
-
-
 const experiences = [
   {
     order: "01",
@@ -14,13 +11,15 @@ const experiences = [
     location: "Manila, Philippines",
     job_description:
       "Leading development of enterprise-level web applications using React and Node.js. Architected microservices infrastructure serving 500k+ daily users. Mentored a team of 5 junior developers and established CI/CD pipelines reducing deployment time by 60%.",
-    tech_skills: JSON.stringify([
-      { TechnologyName: "React" },
-      { TechnologyName: "TypeScript" },
-      { TechnologyName: "Node.js" },
-      { TechnologyName: "PostgreSQL" },
-      { TechnologyName: "AWS" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "React" },
+        { TechnologyName: "TypeScript" },
+        { TechnologyName: "Node.js" },
+        { TechnologyName: "PostgreSQL" },
+        { TechnologyName: "AWS" },
+      ],
+    },
   },
   {
     order: "02",
@@ -32,13 +31,15 @@ const experiences = [
     location: "Cebu, Philippines",
     job_description:
       "Built and maintained multiple client-facing web applications. Developed RESTful APIs and integrated third-party services including payment gateways and analytics platforms. Improved application performance by 40% through code optimization and caching strategies.",
-    tech_skills: JSON.stringify([
-      { TechnologyName: "React" },
-      { TechnologyName: "JavaScript" },
-      { TechnologyName: "Express.js" },
-      { TechnologyName: "MongoDB" },
-      { TechnologyName: "Docker" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "React" },
+        { TechnologyName: "JavaScript" },
+        { TechnologyName: "Express.js" },
+        { TechnologyName: "MongoDB" },
+        { TechnologyName: "Docker" },
+      ],
+    },
   },
   {
     order: "03",
@@ -50,12 +51,14 @@ const experiences = [
     location: "Manila, Philippines",
     job_description:
       "Developed responsive and accessible user interfaces for e-commerce and SaaS platforms. Collaborated with UX designers to implement pixel-perfect designs. Introduced component library standards adopted across the organization.",
-    tech_skills: JSON.stringify([
-      { TechnologyName: "React" },
-      { TechnologyName: "Tailwind CSS" },
-      { TechnologyName: "Next.js" },
-      { TechnologyName: "Figma" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "React" },
+        { TechnologyName: "Tailwind CSS" },
+        { TechnologyName: "Next.js" },
+        { TechnologyName: "Figma" },
+      ],
+    },
   },
   {
     order: "04",
@@ -67,13 +70,15 @@ const experiences = [
     location: "Davao, Philippines",
     job_description:
       "Assisted in building MVPs for early-stage startups. Implemented frontend features from wireframes and contributed to backend API development. Participated in daily stand-ups and agile sprint planning.",
-    tech_skills: JSON.stringify([
-      { TechnologyName: "HTML" },
-      { TechnologyName: "CSS" },
-      { TechnologyName: "JavaScript" },
-      { TechnologyName: "PHP" },
-      { TechnologyName: "MySQL" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "HTML" },
+        { TechnologyName: "CSS" },
+        { TechnologyName: "JavaScript" },
+        { TechnologyName: "PHP" },
+        { TechnologyName: "MySQL" },
+      ],
+    },
   },
 ];
 
@@ -84,13 +89,15 @@ const projects = [
       "Built a full-featured e-commerce platform with real-time inventory management, payment gateway integration, and admin dashboard serving 10k+ daily transactions.",
     highlight_image: "",
     tooltip_images: JSON.stringify([]),
-    tech_skills: JSON.stringify([
-      { TechnologyName: "Next.js" },
-      { TechnologyName: "TypeScript" },
-      { TechnologyName: "Stripe" },
-      { TechnologyName: "PostgreSQL" },
-      { TechnologyName: "Docker" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "Next.js" },
+        { TechnologyName: "TypeScript" },
+        { TechnologyName: "Stripe" },
+        { TechnologyName: "PostgreSQL" },
+        { TechnologyName: "Docker" },
+      ],
+    },
   },
   {
     project_name: "Task Management App",
@@ -98,12 +105,14 @@ const projects = [
       "A Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and role-based access control.",
     highlight_image: "",
     tooltip_images: JSON.stringify([]),
-    tech_skills: JSON.stringify([
-      { TechnologyName: "React" },
-      { TechnologyName: "Node.js" },
-      { TechnologyName: "Socket.io" },
-      { TechnologyName: "MongoDB" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "React" },
+        { TechnologyName: "Node.js" },
+        { TechnologyName: "Socket.io" },
+        { TechnologyName: "MongoDB" },
+      ],
+    },
   },
   {
     project_name: "Weather Dashboard",
@@ -111,12 +120,14 @@ const projects = [
       "Interactive weather visualization dashboard pulling data from OpenWeather API with historical trends, 7-day forecasts, and location-based alerts.",
     highlight_image: "",
     tooltip_images: JSON.stringify([]),
-    tech_skills: JSON.stringify([
-      { TechnologyName: "React" },
-      { TechnologyName: "Chart.js" },
-      { TechnologyName: "Tailwind CSS" },
-      { TechnologyName: "REST API" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "React" },
+        { TechnologyName: "Chart.js" },
+        { TechnologyName: "Tailwind CSS" },
+        { TechnologyName: "REST API" },
+      ],
+    },
   },
   {
     project_name: "CMS Portfolio",
@@ -124,12 +135,14 @@ const projects = [
       "Headless CMS-driven portfolio website with admin dashboard, analytics tracking, and dynamic content management for experience and projects.",
     highlight_image: "",
     tooltip_images: JSON.stringify([]),
-    tech_skills: JSON.stringify([
-      { TechnologyName: "Next.js" },
-      { TechnologyName: "TypeScript" },
-      { TechnologyName: "NextAuth" },
-      { TechnologyName: "Tailwind CSS" },
-    ]),
+    tech_skills: {
+      create: [
+        { TechnologyName: "Next.js" },
+        { TechnologyName: "TypeScript" },
+        { TechnologyName: "NextAuth" },
+        { TechnologyName: "Tailwind CSS" },
+      ],
+    },
   },
 ];
 
