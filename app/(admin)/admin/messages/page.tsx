@@ -61,10 +61,36 @@ const messages = [
 
 export default function MessagesPage() {
   return (
-    <div>
+    <div className="min-h-screen px-7 py-6">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-semibold">Messages</h1>
+      </div>
+      <div className="flex">
+        <div className="w-1/3 border border-gray-300 pr-4">
+          <ul className="divide-y divide-gray-300">
+            {messages.map((message) => (
+              <li key={message.id} className={`flex items-center justify-between p-4 ${message.unread ? "bg-gray-100" : ""}`}>
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col">
+                    <span className="font-semibold">{message.sender}</span>
+                    <span className="text-sm text-gray-600">{message.subject}</span>
+                    <span className="text-xs text-gray-500">{message.preview}</span>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          
+        </div>
+        <div className="w-2/3 border border-gray-300 pr-4">
+          s
+        </div>
+      
+      </div>
+      
+    </div>
+  );
+} 
 
         
-    </div>
-    
-  );
-}
+

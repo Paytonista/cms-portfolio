@@ -3,11 +3,16 @@
 import SideBar from "@/app/components/SideBar";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 import {
   LayoutDashboard, BarChart2, Mail,
-  Bell, LayoutGrid, Settings, LogOut, Hexagon
+  Bell, LayoutGrid, Settings, LogOut, Hexagon, Trophy
 } from 'lucide-react'
+
+const handleLogout = async () => {
+    await signOut({callbackUrl: "/login"});
+  };
 
 const nav = [
   {section: "OVERVIEW", items: [
@@ -17,14 +22,15 @@ const nav = [
   {section: "CONTENT", items: [
     {label: "Projects", href: "/admin/projects", icon: LayoutGrid},
     {label: "Experience", href: "/admin/experience", icon: Mail},
-    {label: "Blog Posts", href: "/admin/blog", icon: Hexagon},
+    {label: "Skills", href: "/admin/skills", icon: Trophy},
+    {label: "Certificates", href: "/admin/blog", icon: Hexagon},
   ]},
   {section: "INBOX", items: [
     {label: "Messages", href: "/admin/messages", icon: Mail},
   ]},
   {section: "SETTINGS", items: [
     {label: "Account", href: "/admin/account", icon: Settings},
-    {label: "Logout", href: "/admin/logout", icon: LogOut},
+    {label: "Logout", href: "", icon: LogOut, onLogout: handleLogout},
   ]},
 ]
 
@@ -33,6 +39,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const pathname = usePathname();
   const formattedPathname = pathname.split("/").slice(2).join("/").charAt(0).toUpperCase() + pathname.split("/").slice(2).join("/").slice(1);
+
 
   return (
     <div className="flex">

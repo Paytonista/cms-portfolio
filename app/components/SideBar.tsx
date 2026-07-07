@@ -1,3 +1,4 @@
+
 import SideBarSection from "./SideBarSection";
 import type { SideBarSectionProps } from "./SideBarSection";
 
@@ -33,6 +34,10 @@ const nav = [
 */
 
 const SideBar = ({ nav }: SideBarProps) => {
+
+
+
+
   return (
     <div> 
     <aside className="w-56 h-screen  flex flex-col border-r">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { signIn } from "@/app/auth"
 
 export const metadata: Metadata = {
   title: "Admin Login",
@@ -20,15 +21,12 @@ export default function Page() {
                 </div>
 
                 
-                <form className="flex flex-col gap-4">
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="username" className="text-sm font-medium text-gray-300">Username</label>
-                        <input type="text" id="username" name="username" className="px-3 py-2 border rounded bg-[#07203785] text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="password" className="text-sm font-medium text-gray-300">Password</label>
-                        <input type="password" id="password" name="password" className="px-3 py-2 border rounded bg-[#07203785] text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    </div>
+                <form className="flex flex-col gap-4"
+                      action={async () => {
+                                "use server"
+                                await signIn("google" , { redirectTo: "/admin/homepage" })
+                     }}>
+                    
                     <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300">Login</button>
                 </form>
             </div>

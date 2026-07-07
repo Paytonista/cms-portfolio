@@ -12,6 +12,7 @@ const SideBarSection = ({ section, items }: SideBarSectionProps) => {
         <p className="text-[10px] tracking-[0.08em] font-bold m-1">{section}</p>
         {items.map((item) => (
             <SideBarItem key={item.label} {...item} />
+            
             ))
         }
     </div>

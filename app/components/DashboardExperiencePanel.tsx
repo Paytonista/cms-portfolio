@@ -32,9 +32,9 @@ const DashboardExperiencePanel = ({ id, order, role, tech_company, active, start
                             <div className="flex">
                                 <Calendar className="w-4 h-4 mr-0.5"/>{start_date.toLocaleDateString()} - {end_date.toLocaleDateString()}
                             </div> 
-                            <div>
-                                {active && <div> <p>Active</p></div>}
-                                {getMonthDifference(start_date, end_date)} mos
+                            <div className="flex gap-1">
+                                {active && <div> <p>Active </p></div>} 
+                                {getMonthDifference(start_date, end_date)}  mos
                             </div> 
                             <div className="flex">
                                 <MapPin className="w-4 h-4 mr-0.5"/>{location}

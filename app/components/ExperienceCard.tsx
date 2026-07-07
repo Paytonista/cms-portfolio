@@ -1,23 +1,35 @@
 
-import TechCard from "@/app/components/TechCard";
+import TechCard ,{ TechCardProps } from "@/app/components/TechCard";
+import {getMonthDifference} from "@/app/utils/date/getmonths"
+import { start } from "repl";
+
 
 interface ExperienceCardProps {
   onClick?: () => void;
-  yearStarted?: string;
-  yearEnded?: string;
-  companyName?: string;
-  companyLink?: string;
-  position?: string;
-  details?: string;
+    id : string;
+    order: string;
+    role: string;
+    tech_company: string;
+    active?: boolean;
+    start_date: Date;
+    end_date: Date;
+    location: string;
+    job_description: string;
+    tech_skills: TechCardProps[];
 }
 
 const ExperienceCard = ({
   onClick,
-  yearStarted,
-  yearEnded,
-  companyName,
-  position,
-  details,
+  id,
+  order,
+  role,
+  tech_company,
+  active,
+  start_date,
+  end_date,
+  location,
+  job_description,
+  tech_skills: tech_skills
 }: ExperienceCardProps) => {
   return (
     <div
@@ -30,28 +42,31 @@ const ExperienceCard = ({
     >
       <div className="flex items-start  gap-6 p-6  ">
         <div className="w-24 shrink-0">
-          <p className="text-sm text-gray-400 whitespace-nowrap py-1">
-              2021–2024
-          </p>
+          <div className="flex flex-col text-sm text-gray-400 whitespace-nowrap py-1 text-center">
+              {active && <span className="text-green-400 font-semibold">Active</span>}
+              {start_date.getFullYear()} - {end_date.getFullYear()}
+              <br />
+              {getMonthDifference(start_date, end_date)} mos
+          </div>
         </div>
 
         <div className="flex-1 flex-col border-l border-gray-300 pl-6">
 
           <div className="flex items-center gap-2">
             <h2 className="text-lg font-semibold whitespace-nowrap">
-              Software Developer Intern
+              {role}
             </h2>
             <a href="https://www.klaviyo.com/" target="_blank" className="text-sm text-gray-400 whitespace-nowrap">
-              LightWeight Solutions
+              {tech_company}
             </a>
           </div>
           <div className="mt-2 text-gray-600">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur varius. Sed at ligula a enim efficitur tincidunt. Curabitur ac odio id metus efficitur fermentum.</p>
+            <p>{job_description}</p>
           </div>
           <div className="mt-4 flex gap-2">
-            <TechCard TechnologyName="React" />
-            <TechCard TechnologyName="TypeScript" />
-            <TechCard TechnologyName="Node.js" />
+            {tech_skills.map((tech_skill) => (
+            <TechCard key={tech_skill.TechnologyName} {...tech_skill}></TechCard>
+            ))}
       
           </div>
         </div>

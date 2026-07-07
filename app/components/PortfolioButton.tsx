@@ -3,12 +3,16 @@ import { ButtonHTMLAttributes } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
   isActive?: boolean;
+  onclick?: () => void;
 }
+
+
 
 const PortfolioButton = ({ 
   variant, 
   isActive = false,
   children, 
+  onclick,
   ...props 
 }: ButtonProps) => {
   return (

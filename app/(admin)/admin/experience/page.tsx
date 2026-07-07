@@ -1,4 +1,4 @@
-import DashboardExperiencePanel from "@/app/components/DashboardExperiencePanel"
+import DashboardExperiencePanel from "@/app/components/DashboardExperiencePanel";
 
 const experiences = [
   {
@@ -88,11 +88,12 @@ export default function ExperiencePage() {
         </button>
       </div>
       <div className="flex flex-col gap-4">
-       {experiences.map ((experience) =>(
+        {experiences.map((experience) => (
           <DashboardExperiencePanel
-            key ={experience.id}
-            {...experience}/>
-       ))}
+            key={experience.id}
+            {...experience}
+          />
+        ))}
       </div>
     </div>
   );
