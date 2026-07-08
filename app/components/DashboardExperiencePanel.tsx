@@ -2,7 +2,7 @@
 
 import DashboardPanel from "./DashboardPanel";
 import TechCard, {TechCardProps} from "./TechCard";
-import { Calendar, MapPin, EditIcon, SquareArrowUp, SquareArrowDown } from "lucide-react";
+import { Calendar, MapPin, EditIcon } from "lucide-react";
 import {getMonthDifference} from "@/app/utils/date/getmonths"
 
 import { start } from "repl";
@@ -49,12 +49,7 @@ const DashboardExperiencePanel = ({ id, order, role, tech_company, active, start
                         <div className = "w-8 h-8   ">
                             <EditIcon/>
                         </div>
-                        <div className = "w-8 h-8   ">
-                            <SquareArrowUp/>
-                        </div>
-                        <div className = "w-8 h-8  ">
-                            <SquareArrowDown/>
-                        </div>
+                        
                     </div>
                     
                 </div>

@@ -12,12 +12,12 @@ const experiences = [
     job_description:
       "Leading development of enterprise-level web applications using React and Node.js. Architected microservices infrastructure serving 500k+ daily users. Mentored a team of 5 junior developers and established CI/CD pipelines reducing deployment time by 60%.",
     tech_skills: {
-      create: [
-        { TechnologyName: "React" },
-        { TechnologyName: "TypeScript" },
-        { TechnologyName: "Node.js" },
-        { TechnologyName: "PostgreSQL" },
-        { TechnologyName: "AWS" },
+      connectOrCreate: [
+        { where: { TechnologyName: "React" }, create: { TechnologyName: "React" } },
+        { where: { TechnologyName: "TypeScript" }, create: { TechnologyName: "TypeScript" } },
+        { where: { TechnologyName: "Node.js" }, create: { TechnologyName: "Node.js" } },
+        { where: { TechnologyName: "PostgreSQL" }, create: { TechnologyName: "PostgreSQL" } },
+        { where: { TechnologyName: "AWS" }, create: { TechnologyName: "AWS" } },
       ],
     },
   },
@@ -32,12 +32,12 @@ const experiences = [
     job_description:
       "Built and maintained multiple client-facing web applications. Developed RESTful APIs and integrated third-party services including payment gateways and analytics platforms. Improved application performance by 40% through code optimization and caching strategies.",
     tech_skills: {
-      create: [
-        { TechnologyName: "React" },
-        { TechnologyName: "JavaScript" },
-        { TechnologyName: "Express.js" },
-        { TechnologyName: "MongoDB" },
-        { TechnologyName: "Docker" },
+      connectOrCreate: [
+        { where: { TechnologyName: "React" }, create: { TechnologyName: "React" } },
+        { where: { TechnologyName: "JavaScript" }, create: { TechnologyName: "JavaScript" } },
+        { where: { TechnologyName: "Express.js" }, create: { TechnologyName: "Express.js" } },
+        { where: { TechnologyName: "MongoDB" }, create: { TechnologyName: "MongoDB" } },
+        { where: { TechnologyName: "Docker" }, create: { TechnologyName: "Docker" } },
       ],
     },
   },
@@ -52,11 +52,11 @@ const experiences = [
     job_description:
       "Developed responsive and accessible user interfaces for e-commerce and SaaS platforms. Collaborated with UX designers to implement pixel-perfect designs. Introduced component library standards adopted across the organization.",
     tech_skills: {
-      create: [
-        { TechnologyName: "React" },
-        { TechnologyName: "Tailwind CSS" },
-        { TechnologyName: "Next.js" },
-        { TechnologyName: "Figma" },
+      connectOrCreate: [
+        { where: { TechnologyName: "React" }, create: { TechnologyName: "React" } },
+        { where: { TechnologyName: "Tailwind CSS" }, create: { TechnologyName: "Tailwind CSS" } },
+        { where: { TechnologyName: "Next.js" }, create: { TechnologyName: "Next.js" } },
+        { where: { TechnologyName: "Figma" }, create: { TechnologyName: "Figma" } },
       ],
     },
   },
@@ -71,12 +71,12 @@ const experiences = [
     job_description:
       "Assisted in building MVPs for early-stage startups. Implemented frontend features from wireframes and contributed to backend API development. Participated in daily stand-ups and agile sprint planning.",
     tech_skills: {
-      create: [
-        { TechnologyName: "HTML" },
-        { TechnologyName: "CSS" },
-        { TechnologyName: "JavaScript" },
-        { TechnologyName: "PHP" },
-        { TechnologyName: "MySQL" },
+      connectOrCreate: [
+        { where: { TechnologyName: "HTML" }, create: { TechnologyName: "HTML" } },
+        { where: { TechnologyName: "CSS" }, create: { TechnologyName: "CSS" } },
+        { where: { TechnologyName: "JavaScript" }, create: { TechnologyName: "JavaScript" } },
+        { where: { TechnologyName: "PHP" }, create: { TechnologyName: "PHP" } },
+        { where: { TechnologyName: "MySQL" }, create: { TechnologyName: "MySQL" } },
       ],
     },
   },
@@ -87,15 +87,15 @@ const projects = [
     project_name: "E-Commerce Platform",
     details:
       "Built a full-featured e-commerce platform with real-time inventory management, payment gateway integration, and admin dashboard serving 10k+ daily transactions.",
-    highlight_image: "",
+    highlight_image: "https://placehold.co/600x400/0F4C75/BBE1FA?text=E-Commerce",
     tooltip_images: JSON.stringify([]),
     tech_skills: {
-      create: [
-        { TechnologyName: "Next.js" },
-        { TechnologyName: "TypeScript" },
-        { TechnologyName: "Stripe" },
-        { TechnologyName: "PostgreSQL" },
-        { TechnologyName: "Docker" },
+      connectOrCreate: [
+        { where: { TechnologyName: "Next.js" }, create: { TechnologyName: "Next.js" } },
+        { where: { TechnologyName: "TypeScript" }, create: { TechnologyName: "TypeScript" } },
+        { where: { TechnologyName: "Stripe" }, create: { TechnologyName: "Stripe" } },
+        { where: { TechnologyName: "PostgreSQL" }, create: { TechnologyName: "PostgreSQL" } },
+        { where: { TechnologyName: "Docker" }, create: { TechnologyName: "Docker" } },
       ],
     },
   },
@@ -103,14 +103,14 @@ const projects = [
     project_name: "Task Management App",
     details:
       "A Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and role-based access control.",
-    highlight_image: "",
+    highlight_image: "https://placehold.co/600x400/0F4C75/BBE1FA?text=Task+App",
     tooltip_images: JSON.stringify([]),
     tech_skills: {
-      create: [
-        { TechnologyName: "React" },
-        { TechnologyName: "Node.js" },
-        { TechnologyName: "Socket.io" },
-        { TechnologyName: "MongoDB" },
+      connectOrCreate: [
+        { where: { TechnologyName: "React" }, create: { TechnologyName: "React" } },
+        { where: { TechnologyName: "Node.js" }, create: { TechnologyName: "Node.js" } },
+        { where: { TechnologyName: "Socket.io" }, create: { TechnologyName: "Socket.io" } },
+        { where: { TechnologyName: "MongoDB" }, create: { TechnologyName: "MongoDB" } },
       ],
     },
   },
@@ -118,14 +118,14 @@ const projects = [
     project_name: "Weather Dashboard",
     details:
       "Interactive weather visualization dashboard pulling data from OpenWeather API with historical trends, 7-day forecasts, and location-based alerts.",
-    highlight_image: "",
+    highlight_image: "https://placehold.co/600x400/0F4C75/BBE1FA?text=Weather",
     tooltip_images: JSON.stringify([]),
     tech_skills: {
-      create: [
-        { TechnologyName: "React" },
-        { TechnologyName: "Chart.js" },
-        { TechnologyName: "Tailwind CSS" },
-        { TechnologyName: "REST API" },
+      connectOrCreate: [
+        { where: { TechnologyName: "Next.js" }, create: { TechnologyName: "Next.js" } },
+        { where: { TechnologyName: "TypeScript" }, create: { TechnologyName: "TypeScript" } },
+        { where: { TechnologyName: "NextAuth" }, create: { TechnologyName: "NextAuth" } },
+        { where: { TechnologyName: "Tailwind CSS" }, create: { TechnologyName: "Tailwind CSS" } },
       ],
     },
   },
@@ -133,14 +133,14 @@ const projects = [
     project_name: "CMS Portfolio",
     details:
       "Headless CMS-driven portfolio website with admin dashboard, analytics tracking, and dynamic content management for experience and projects.",
-    highlight_image: "",
+    highlight_image: "https://placehold.co/600x400/0F4C75/BBE1FA?text=CMS+Portfolio",
     tooltip_images: JSON.stringify([]),
     tech_skills: {
-      create: [
-        { TechnologyName: "Next.js" },
-        { TechnologyName: "TypeScript" },
-        { TechnologyName: "NextAuth" },
-        { TechnologyName: "Tailwind CSS" },
+      connectOrCreate: [
+        { where: { TechnologyName: "React" }, create: { TechnologyName: "React" } },
+        { where: { TechnologyName: "Chart.js" }, create: { TechnologyName: "Chart.js" } },
+        { where: { TechnologyName: "Tailwind CSS" }, create: { TechnologyName: "Tailwind CSS" } },
+        { where: { TechnologyName: "REST API" }, create: { TechnologyName: "REST API" } },
       ],
     },
   },
@@ -197,12 +197,36 @@ const messages = [
 async function main() {
   console.log("Seeding experiences...");
   for (const exp of experiences) {
-    await prisma.experience.create({ data: exp });
+    const { tech_skills, ...expData } = exp;
+    const skills = tech_skills.connectOrCreate;
+
+    await prisma.experience.create({
+      data: {
+        ...expData,
+        tech_skills: {
+          connect: skills.map((s) => ({
+            TechnologyName: s.create.TechnologyName,
+          })),
+        },
+      },
+    });
   }
 
   console.log("Seeding projects...");
   for (const project of projects) {
-    await prisma.project.create({ data: project });
+    const { tech_skills, ...projectData } = project;
+    const skills = tech_skills.connectOrCreate;
+
+    await prisma.project.create({
+      data: {
+        ...projectData,
+        tech_skills: {
+          connect: skills.map((s) => ({
+            TechnologyName: s.create.TechnologyName,
+          })),
+        },
+      },
+    });
   }
 
   console.log("Seeding messages...");

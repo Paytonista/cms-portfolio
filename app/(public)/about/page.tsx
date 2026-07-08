@@ -95,7 +95,7 @@ export default function Home() {
     {
       project_name: "E-Commerce Platform",
       details: "Built a full-featured e-commerce platform with real-time inventory management, payment gateway integration, and admin dashboard serving 10k+ daily transactions.",
-      highlight_image: "",
+      highlight_image: "/images/sampleimages/sample-image.png",
       tooltip_images: [],
       tech_skills: [
         { TechnologyName: "Next.js" },
@@ -108,7 +108,7 @@ export default function Home() {
     {
       project_name: "Task Management App",
       details: "A Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and role-based access control.",
-      highlight_image: "",
+      highlight_image: "/images/sampleimages/sample-image.png",
       tooltip_images: [],
       tech_skills: [
         { TechnologyName: "React" },
@@ -120,7 +120,7 @@ export default function Home() {
     {
       project_name: "Weather Dashboard",
       details: "Interactive weather visualization dashboard pulling data from OpenWeather API with historical trends, 7-day forecasts, and location-based alerts.",
-      highlight_image: "",
+      highlight_image: "/images/sampleimages/sample-image.png",
       tooltip_images: [],
       tech_skills: [
         { TechnologyName: "React" },
@@ -132,8 +132,8 @@ export default function Home() {
     {
       project_name: "CMS Portfolio",
       details: "Headless CMS-driven portfolio website with admin dashboard, analytics tracking, and dynamic content management for experience and projects.",
-      highlight_image: "",
-      tooltip_images: [],
+      highlight_image: "/images/sampleimages/sample-image.png",
+      tooltip_images: [ "/images/sampleimages/sample-image-2.png", "/images/sampleimages/sample-image-3.png"],
       tech_skills: [
         { TechnologyName: "Next.js" },
         { TechnologyName: "TypeScript" },
@@ -144,10 +144,10 @@ export default function Home() {
   ];
 
   const scrollToSection = (section: string) => {
-  const options: ScrollIntoViewOptions = {
-    behavior: "smooth",
-    block: "start",
-  };
+    const options: ScrollIntoViewOptions = {
+      behavior: "smooth",
+      block: "start",
+    };
 
   if (section === "aboutme") aboutRef.current?.scrollIntoView(options);
   if (section === "experience") experienceRef.current?.scrollIntoView(options);
@@ -175,7 +175,7 @@ export default function Home() {
     
     <main className="h-[calc(100vh-5rem)] font-raleway z-2" >
         
-        <div className="flex flex-row justify-between px-50 py-30">
+        <div className="flex flex-row justify-between px-50 py-20">
             <div className="sticky top-20 flex flex-col h-full">
               <div className="flex flex-col h-full" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 whitespace-nowrap">
@@ -222,8 +222,6 @@ export default function Home() {
               <div className="my-10">
                 {experiences.map((experience) => (
                     <ExperienceCard key={experience.id} {...experience}></ExperienceCard>
-
-
                 ))}
 
                 <p><a>View Resume</a></p>

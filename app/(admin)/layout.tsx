@@ -23,7 +23,7 @@ const nav = [
     {label: "Projects", href: "/admin/projects", icon: LayoutGrid},
     {label: "Experience", href: "/admin/experience", icon: Mail},
     {label: "Skills", href: "/admin/skills", icon: Trophy},
-    {label: "Certificates", href: "/admin/blog", icon: Hexagon},
+    {label: "Certificates", href: "/admin/certificates", icon: Hexagon},
   ]},
   {section: "INBOX", items: [
     {label: "Messages", href: "/admin/messages", icon: Mail},

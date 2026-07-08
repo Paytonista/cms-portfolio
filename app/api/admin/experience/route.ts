@@ -34,12 +34,19 @@ export async function POST(req: Request) {
 
   const body = await req.json();
 
+  for (const skill of body.tech_skills) {
+    await prisma.techSkill.upsert({
+      where: { TechnologyName: skill.TechnologyName },
+      update: {},
+      create: { TechnologyName: skill.TechnologyName },
+    });
+  }
  
   const experience = await prisma.experience.create({
     data: {
         ...body,
         tech_skills: {
-            create: body.tech_skills.map((skill: { TechnologyName: string }) => ({
+            connect: body.tech_skills.map((skill: { TechnologyName: string }) => ({
                 TechnologyName: skill.TechnologyName,
             })),
         },

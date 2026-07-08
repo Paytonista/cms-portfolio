@@ -25,11 +25,15 @@ const ProjectCard = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goNext = () => {
+    console.log("goNext called, currentIndex:", currentIndex);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % tooltip_images.length);
     
   };
 
   const goPrevious = () => {
-    
+    console.log("goPrevious called, currentIndex:", currentIndex);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + tooltip_images.length) % tooltip_images.length);
+
   };
 
   return (
@@ -44,6 +48,9 @@ const ProjectCard = ({
         
       "
     > <div
+        onClick = {(e) => {
+            e.stopPropagation();
+          }}
         className={`
           fixed inset-0 z-50 backdrop-blur-md flex items-center justify-center
           transition-all duration-300 ease-in-out
@@ -57,26 +64,37 @@ const ProjectCard = ({
           }}
           className="absolute inset-0 bg-black opacity-50"
         ></div>
-        
-
-        {tooltip_images.map((src) => (
-          <Fragment key={src}>
-            <img
-                src={src}
-                className="max-w-md aspect-video border"
-            />
-            {tooltip_images.length > 1 && (
-            <>
-            
-              
-              
-            </>
+        {tooltip_images.length > 1 && (
+          <button 
+            onClick={(e) => {
+            e.stopPropagation();
+            goPrevious();
+          }}
+            className={`z-51 transition-opacity duration-200 ${ currentIndex === 0 ? "opacity-0" : "opacity-100" }`}
+            >
+            <ChevronLeftIcon />
+          </button>        
             )}
- 
-          
-          </Fragment>
-          ) 
+        
+        {tooltip_images.length > 1 && (
+          <img
+            key={tooltip_images[currentIndex]}
+            src={tooltip_images[currentIndex]}
+            loading="lazy"
+            className="max-w-lg aspect-video border"
+          />
         )}
+
+        {tooltip_images.length > 1 && (
+          <button onClick={(e) => {
+            e.stopPropagation();
+            goNext();
+          }}
+            className={`z-51 transition-opacity duration-200 ${ currentIndex === tooltip_images.length - 1 ? "opacity-0" : "opacity-100" }` }
+            >
+            <ChevronRightIcon/>
+          </button>        
+            )}
 
         
       </div>
@@ -84,6 +102,11 @@ const ProjectCard = ({
         
         <div className="flex items-start  gap-6 p-6  ">
           <div className="w-24 max-w-md aspect-video border">
+            <img
+              src={highlight_image}
+              className="w-full h-full object-cover"
+            />
+            
             
             
           </div>
