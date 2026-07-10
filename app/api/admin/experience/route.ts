@@ -14,20 +14,24 @@ import { prisma } from "@/lib/prisma";
  */
 export async function GET(req: Request) {
 
+
   const { searchParams } = new URL(req.url);
-
-  const limit = Number(searchParams.get("limit")) || undefined;
-
+  const limit = Number(searchParams.get("limit")) || 10;
+  const page = Number(searchParams.get("page")) || 1;
+  const skip = (page - 1) * limit;
  
-  const experiences = await prisma.experience.findMany({
-    orderBy: { created_at: "desc" },
-    include: { tech_skills: true },
-    // newest first
-    take: limit,                      // limit results (if provided)
-  });
+  const [experiences, total] = await Promise.all([
+    await prisma.experience.findMany({
+        orderBy: { created_at: "desc" },
+        include: { tech_skills: true },
+        take: limit,                      
+        skip: skip,                       
+      }),
+      prisma.experience.count(),
+  ]);
 
- 
-  return NextResponse.json(experiences);
+  return NextResponse.json({ experiences, total, page, totalPages: Math.ceil(total / limit) }, { status: 200 });
+  
 }
 
 export async function POST(req: Request) {

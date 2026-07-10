@@ -94,7 +94,7 @@ model Message {
   sender     String
   email      String
   subject    String
-  message    String   // renamed from "preview" to "message"
+  message    String   
   starred    Boolean  @default(false)
   unread     Boolean  @default(true)
   created_at DateTime @default(now())
