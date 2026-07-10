@@ -2,7 +2,6 @@ import { prisma } from "@/lib/prisma";
 
 const experiences = [
   {
-    order: "01",
     role: "Senior Full Stack Developer",
     tech_company: "TechCorp Solutions",
     active: true,
@@ -22,7 +21,6 @@ const experiences = [
     },
   },
   {
-    order: "02",
     role: "Full Stack Developer",
     tech_company: "Digital Innovations Inc.",
     active: false,
@@ -42,7 +40,6 @@ const experiences = [
     },
   },
   {
-    order: "03",
     role: "Frontend Developer",
     tech_company: "Creative Web Studio",
     active: false,
@@ -61,7 +58,6 @@ const experiences = [
     },
   },
   {
-    order: "04",
     role: "Junior Web Developer",
     tech_company: "StartUp Labs PH",
     active: false,
@@ -200,6 +196,14 @@ async function main() {
     const { tech_skills, ...expData } = exp;
     const skills = tech_skills.connectOrCreate;
 
+    for (const skill of skills) {
+      await prisma.techSkill.upsert({
+        where: { TechnologyName: skill.create.TechnologyName },
+        update: {},
+        create: { TechnologyName: skill.create.TechnologyName },
+      });
+    }
+
     await prisma.experience.create({
       data: {
         ...expData,
@@ -216,6 +220,14 @@ async function main() {
   for (const project of projects) {
     const { tech_skills, ...projectData } = project;
     const skills = tech_skills.connectOrCreate;
+
+    for (const skill of skills) {
+      await prisma.techSkill.upsert({
+        where: { TechnologyName: skill.create.TechnologyName },
+        update: {},
+        create: { TechnologyName: skill.create.TechnologyName },
+      });
+    }
 
     await prisma.project.create({
       data: {

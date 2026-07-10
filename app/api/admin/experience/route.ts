@@ -60,3 +60,30 @@ export async function POST(req: Request) {
 
   return NextResponse.json(experience, { status: 201 });
 }
+
+export async function PATCH(req: Request) {
+
+  const body = await req.json();
+
+  const experience = await prisma.experience.update({
+    where: {id: body.id},
+    data: {
+      ...body,
+      tech_skills: {
+        set: body.tech_skills.map((s) => ({ TechnologyName: s.TechnologyName})),
+      },
+    },
+    include: { tech_skills: true },
+  })
+  return NextResponse.json(experience);
+}
+
+export async function DELETE(req: Request) {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+
+  if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+
+  await prisma.experience.delete({ where: { id } });
+  return NextResponse.json({ success: true });
+}

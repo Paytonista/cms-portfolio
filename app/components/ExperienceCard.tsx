@@ -7,12 +7,11 @@ import { start } from "repl";
 interface ExperienceCardProps {
   onClick?: () => void;
     id : string;
-    order: string;
     role: string;
     tech_company: string;
     active?: boolean;
     start_date: Date;
-    end_date: Date;
+    end_date: Date | null;
     location: string;
     job_description: string;
     tech_skills: TechCardProps[];
@@ -21,7 +20,6 @@ interface ExperienceCardProps {
 const ExperienceCard = ({
   onClick,
   id,
-  order,
   role,
   tech_company,
   active,

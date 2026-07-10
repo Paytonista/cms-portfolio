@@ -6,7 +6,6 @@ import ExperienceModalForm from "@/app/components/ExperienceModalForm";
 
 interface Experience {
   id: string;
-  order: string;
   role: string;
   tech_company: string;
   active: boolean;
@@ -19,28 +18,71 @@ interface Experience {
 
 export default function ExperiencePage() {
   const [experiences, setExperiences] = useState<Experience[]>([]);
+
+  {"Pagination"}
+
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  
   const limit = 5;
+
+  const [formdata, SetFormData] = useState({
+    role: "",
+    tech_company: "",
+    active: false,
+    start_date: "",
+    end_date: "",
+    location: "",
+    job_description: "",
+    tech_skills: [] as string[],
+  })
+
+  const [availableSkills, setAvailableSkills] = useState<string[]>([]);
+  const [editExperience, setEditExperience] =  useState<Experience | null> (null);
+
+  useEffect(() => {
+    fetch("/api/admin/skills")
+      .then((res) => res.json())
+      .then((data) => setAvailableSkills(data.map((s: any) => s.TechnologyName)));
+  }, []);
 
   useEffect(() => {
     setLoading(true);
     fetch(`/api/admin/experience?page=${page}&limit=${limit}`)
       .then((response) => response.json())
-      .then((data) => 
+      .then((data) => {
         setExperiences(
           data.experiences.map((exp: any) => ({
             ...exp,
             start_date: new Date(exp.start_date),
             end_date: new Date(exp.end_date),
           }))
-        )
-      );
+        );
+        setTotalPages(data.totalPages);
+        setLoading(false);
+      });
       
-  }, []);
+  }, [page]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      const req = await fetch("/api/admin/experience", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formdata,
+          start_date: new Date(formdata.start_date),
+          end_date: formdata.end_date ? new Date(formdata.end_date) : null,
+          tech_skills: formdata.tech_skills.map((name) => ({ TechnologyName: name }))
+        }),
+      });
+
+      if(req.ok) {
+        
+
+      }
+  };
   
   return (
     <div className="min-h-screen px-7 py-6">
@@ -56,9 +98,143 @@ export default function ExperiencePage() {
             onClose={() => setShowForm(false)}
             title="Add Experience"
         >
-        <form>
-          113
-        </form>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label className="block text-xs text-slate-500 mb-1">Role</label>
+              <input
+                type="text"
+                value={formdata.role}
+                onChange={(e) => SetFormData({ ...formdata, role: e.target.value })}
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+              />
+           </div>
+           <div>
+              <label className="block text-xs text-slate-500 mb-1">Company</label>
+              <input
+                type="text"
+                value={formdata.tech_company}
+                onChange={(e) => SetFormData({ ...formdata, tech_company: e.target.value })}
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+              />
+           </div>
+           <div>
+              <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formdata.active}
+                  onChange={(e) => SetFormData({ ...formdata, active: e.target.checked })}
+                  className="w-4 h-4"
+                />
+                Currently active
+            </label>
+           </div>
+           
+           
+            <div>
+              <label className="block text-xs text-slate-500 mb-1">Start Date</label>
+              <input
+                type="date"
+                value={formdata.start_date}
+                onChange={(e) => SetFormData({ ...formdata, start_date: e.target.value })}
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+              />
+           </div>
+
+           {!formdata.active && 
+           <div>
+              <label className="block text-xs text-slate-500 mb-1">End Date</label>
+              <input
+                type="date"
+                value={formdata.end_date}
+                onChange={(e) => SetFormData({ ...formdata, end_date: e.target.value })}
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+              />
+           </div>}
+           
+           <div>
+              <label className="block text-xs text-slate-500 mb-1">Location</label>
+              <input
+                type="text"
+                value={formdata.location}
+                onChange={(e) => SetFormData({ ...formdata, location: e.target.value })}
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+              />
+           </div>
+           <div>
+              <label className="block text-xs text-slate-500 mb-1">Job Description</label>
+              <input
+                type="text"
+                value={formdata.job_description}
+                onChange={(e) => SetFormData({ ...formdata, job_description: e.target.value })}
+                className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+              />
+           </div>
+           <div>
+            <label className="block text-xs text-slate-500 mb-1 gap-1">Selected Skills</label>
+              {formdata.tech_skills.map((skill) => (
+                <span className="gap-1 m-1 border border-slate-300 rounded-xl px-3 py-1 text-xs hover:bg-slate-100" key={skill}>{skill}
+
+                <button
+                className="gap-1 m-1 my-2"
+                type='button'
+                onClick={() => SetFormData({...formdata, tech_skills:formdata.tech_skills.filter(s => s !== skill)})}>
+                    &times;
+
+                </button>
+                </span>
+              ))}
+           </div>
+           <div >
+            <label className="block text-xs text-slate-500 mb-1">Available Skills</label>
+              {availableSkills 
+                .filter((s) => !formdata.tech_skills.includes(s))
+                .map((skill) => (
+                  <button
+                    key={skill}
+                    type="button"
+                    onClick={() => SetFormData({ ...formdata, tech_skills: [...formdata.tech_skills, skill] })}
+                    className="m-1 border border-slate-300 rounded-xl px-3 py-1 text-xs hover:bg-slate-100"
+                  >
+                  + {skill}
+                </button>
+
+
+                ))}
+
+           </div>
+           <div>
+            <label className="block text-xs text-slate-500 mb-1">Enter a new skill</label>
+            <input
+            className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+            placeholder="Type a new skill and press Enter"
+            onKeyDown={(e) => {
+               if(e.key === "Enter" && e.currentTarget.value) {
+                e.preventDefault;
+                const newSkill = e.currentTarget.value.trim();
+                if(newSkill && !formdata.tech_skills.includes(newSkill)) {
+                  SetFormData({ ...formdata, tech_skills: [...formdata.tech_skills, newSkill]});
+                }
+                e.currentTarget.value = "";
+               }
+            }}
+            
+            
+            
+            />
+
+
+           </div>
+
+           
+           
+
+
+            <div className="flex justify-end gap-2 pt-2">
+
+              <button type="button" onClick={() => setShowForm(false)}>Cancel</button>
+              <button type="submit">Save</button>
+            </div>
+          </form>
 
         </ExperienceModalForm>
       </div>

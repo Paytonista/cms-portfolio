@@ -65,12 +65,11 @@ model TechSkill {
 
 model Experience {
   id              String   @id @default(cuid())
-  order           String
   role            String
   tech_company    String
   active          Boolean  @default(false)
   start_date      DateTime
-  end_date        DateTime
+  end_date        DateTime?
   location        String
   job_description String
   tech_skills     TechSkill[]

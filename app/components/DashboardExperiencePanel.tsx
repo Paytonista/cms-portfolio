@@ -11,19 +11,18 @@ import { start } from "repl";
 
 interface DashboardExperiencePanelProps {
     id : string;
-    order: string;
     role: string;
     tech_company: string;
     active?: boolean;
     start_date: Date;
-    end_date: Date;
+    end_date: Date | null;
     location: string;
     job_description: string;
     tech_skills: TechCardProps[];
 
 }
 
-const DashboardExperiencePanel = ({ id, order, role, tech_company, active, start_date, end_date, location, job_description, tech_skills : tech_skills} : DashboardExperiencePanelProps) => {
+const DashboardExperiencePanel = ({ id, role, tech_company, active, start_date, end_date, location, job_description, tech_skills : tech_skills} : DashboardExperiencePanelProps) => {
     return (
         <>
         <div className="flex flex-col  border border-slate-400 rounded py-3">
