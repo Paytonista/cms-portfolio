@@ -2,7 +2,7 @@
 
 import DashboardPanel from "./DashboardPanel";
 import TechCard, {TechCardProps} from "./TechCard";
-import { Calendar, MapPin, EditIcon } from "lucide-react";
+import { Calendar, MapPin, EditIcon, Trash2 } from "lucide-react";
 import {getMonthDifference} from "@/app/utils/date/getmonths"
 
 import { start } from "repl";
@@ -13,16 +13,18 @@ interface DashboardExperiencePanelProps {
     id : string;
     role: string;
     tech_company: string;
-    active?: boolean;
+    active: boolean;
     start_date: Date;
     end_date: Date | null;
     location: string;
     job_description: string;
     tech_skills: TechCardProps[];
+    onEdit?: (experience : DashboardExperiencePanelProps) => void;
+    onDelete?: (id : string) => void;
 
 }
 
-const DashboardExperiencePanel = ({ id, role, tech_company, active, start_date, end_date, location, job_description, tech_skills : tech_skills} : DashboardExperiencePanelProps) => {
+const DashboardExperiencePanel = ({ id, role, tech_company, active, start_date, end_date, location, job_description, tech_skills : tech_skills , onEdit, onDelete} : DashboardExperiencePanelProps) => {
     return (
         <>
         <div className="flex flex-col  border border-slate-400 rounded py-3">
@@ -32,12 +34,11 @@ const DashboardExperiencePanel = ({ id, role, tech_company, active, start_date, 
                         <div className="text-md">{tech_company}</div>
                         <div className="text-xs flex gap-2 text-light tracking-tight py-1">
                             <div className="flex">
-                                <Calendar className="w-4 h-4 mr-0.5"/>{start_date.toLocaleDateString()} - {end_date.toLocaleDateString()}
+                                <Calendar className="w-4 h-4 mr-0.5"/>
+                                {end_date ? <div>{start_date.toLocaleDateString()} - {end_date.toLocaleDateString()}</div>  : <div>Present</div>}
+                                
                             </div> 
-                            <div className="flex gap-1">
-                                {active && <div> <p>Active </p></div>} 
-                                {getMonthDifference(start_date, end_date)}  mos
-                            </div> 
+        
                             <div className="flex">
                                 <MapPin className="w-4 h-4 mr-0.5"/>{location}
                             </div> 
@@ -46,7 +47,12 @@ const DashboardExperiencePanel = ({ id, role, tech_company, active, start_date, 
                     </div>
                     <div className = "flex  ml-auto gap-2 ">
                         <div className = "w-8 h-8   ">
-                            <EditIcon/>
+                            <EditIcon 
+                            className="m-1 transition-transform duration-200 hover:scale-125"
+                            onClick={() => onEdit?.({id, role, tech_company, active, start_date, end_date, location, job_description, tech_skills})}/>
+                            <Trash2 
+                            className="m-1 transition-transform duration-200 hover:scale-125"
+                            onClick={() => onDelete?.(id)}/>
                         </div>
                         
                     </div>

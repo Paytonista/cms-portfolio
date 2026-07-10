@@ -10,7 +10,7 @@ interface Experience {
   tech_company: string;
   active: boolean;
   start_date: Date;
-  end_date: Date;
+  end_date: Date | null;
   location: string;
   job_description: string;
   tech_skills: { TechnologyName: string }[];
@@ -56,7 +56,7 @@ export default function ExperiencePage() {
           data.experiences.map((exp: any) => ({
             ...exp,
             start_date: new Date(exp.start_date),
-            end_date: new Date(exp.end_date),
+            end_date: exp.end_date ? new Date(exp.end_date) : null
           }))
         );
         setTotalPages(data.totalPages);
@@ -66,21 +66,24 @@ export default function ExperiencePage() {
   }, [page]);
 
   const handleSubmit = async (e: React.FormEvent) => {
+      const method = editExperience ? "PATCH" : "POST";
+    
       e.preventDefault();
       const req = await fetch("/api/admin/experience", {
-        method: "POST",
+        method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...(editExperience && { id: editExperience.id }),
           ...formdata,
           start_date: new Date(formdata.start_date),
           end_date: formdata.end_date ? new Date(formdata.end_date) : null,
-          tech_skills: formdata.tech_skills.map((name) => ({ TechnologyName: name }))
+          tech_skills: formdata.tech_skills.map((name) => ({ TechnologyName: name })),
         }),
       });
-
       if(req.ok) {
-        
-
+        setShowForm(false);
+        setEditExperience(null);
+        window.location.reload();
       }
   };
   
@@ -96,12 +99,13 @@ export default function ExperiencePage() {
         <ExperienceModalForm
             isOpen={showForm}
             onClose={() => setShowForm(false)}
-            title="Add Experience"
+            title={editExperience ? "Edit Experience" : "Add Experience"}
         >
           <form onSubmit={handleSubmit}>
             <div>
               <label className="block text-xs text-slate-500 mb-1">Role</label>
               <input
+                required
                 type="text"
                 value={formdata.role}
                 onChange={(e) => SetFormData({ ...formdata, role: e.target.value })}
@@ -111,6 +115,7 @@ export default function ExperiencePage() {
            <div>
               <label className="block text-xs text-slate-500 mb-1">Company</label>
               <input
+                required
                 type="text"
                 value={formdata.tech_company}
                 onChange={(e) => SetFormData({ ...formdata, tech_company: e.target.value })}
@@ -120,6 +125,7 @@ export default function ExperiencePage() {
            <div>
               <label className="flex items-center gap-2 text-sm cursor-pointer">
                 <input
+
                   type="checkbox"
                   checked={formdata.active}
                   onChange={(e) => SetFormData({ ...formdata, active: e.target.checked })}
@@ -133,6 +139,7 @@ export default function ExperiencePage() {
             <div>
               <label className="block text-xs text-slate-500 mb-1">Start Date</label>
               <input
+                required
                 type="date"
                 value={formdata.start_date}
                 onChange={(e) => SetFormData({ ...formdata, start_date: e.target.value })}
@@ -154,6 +161,7 @@ export default function ExperiencePage() {
            <div>
               <label className="block text-xs text-slate-500 mb-1">Location</label>
               <input
+                required
                 type="text"
                 value={formdata.location}
                 onChange={(e) => SetFormData({ ...formdata, location: e.target.value })}
@@ -163,6 +171,7 @@ export default function ExperiencePage() {
            <div>
               <label className="block text-xs text-slate-500 mb-1">Job Description</label>
               <input
+                required
                 type="text"
                 value={formdata.job_description}
                 onChange={(e) => SetFormData({ ...formdata, job_description: e.target.value })}
@@ -209,7 +218,7 @@ export default function ExperiencePage() {
             placeholder="Type a new skill and press Enter"
             onKeyDown={(e) => {
                if(e.key === "Enter" && e.currentTarget.value) {
-                e.preventDefault;
+                e.preventDefault();
                 const newSkill = e.currentTarget.value.trim();
                 if(newSkill && !formdata.tech_skills.includes(newSkill)) {
                   SetFormData({ ...formdata, tech_skills: [...formdata.tech_skills, newSkill]});
@@ -243,6 +252,29 @@ export default function ExperiencePage() {
           <DashboardExperiencePanel
             key={experience.id}
             {...experience}
+            onEdit={(experience) => {
+              setEditExperience(experience);
+              SetFormData({
+                role: experience.role,
+                tech_company: experience.tech_company,
+                active: experience.active,
+                start_date: experience.start_date ? new Date(experience.start_date).toISOString().split("T")[0] : "",
+                end_date: experience.end_date ? new Date(experience.end_date).toISOString().split("T")[0] : "",
+                location: experience.location,
+                job_description: experience.job_description,
+                tech_skills: experience.tech_skills.map((s) => s.TechnologyName),
+              });
+              setShowForm(true);
+
+            }}
+            onDelete={(id) => {
+              if(confirm("Delete this experience")) {
+                fetch(`/api/admin/experience?id=${id}`, {method : "DELETE"})
+                  .then((req) => {
+                      if (req.ok) setExperiences((prev) => prev.filter((e) => e.id !== id));
+                  });
+              }
+            }}
           />
         ))}
       </div>
