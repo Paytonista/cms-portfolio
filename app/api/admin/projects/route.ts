@@ -91,7 +91,7 @@ export async function PATCH(req: Request) {
       ...body,
       tooltip_images: JSON.stringify(body.tooltip_images || []),
       tech_skills: {
-        set: body.tech_skills.map((s) => ({ TechnologyName: s.TechnologyName})),
+        set: body.tech_skills.map((s: {TechnologyName : string}) => ({ TechnologyName: s.TechnologyName})),
       },
     },
     include: { tech_skills: true },
