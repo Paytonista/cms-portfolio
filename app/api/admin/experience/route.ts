@@ -79,7 +79,7 @@ export async function PATCH(req: Request) {
     data: {
       ...body,
       tech_skills: {
-        set: body.tech_skills.map((s) => ({ TechnologyName: s.TechnologyName})),
+        set: body.tech_skills.map((s: {TechnologyName : string}) => ({ TechnologyName: s.TechnologyName})),
       },
     },
     include: { tech_skills: true },
