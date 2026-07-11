@@ -81,7 +81,7 @@ const ProjectCard = ({
             key={tooltip_images[currentIndex]}
             src={tooltip_images[currentIndex]}
             loading="lazy"
-            className="max-w-lg aspect-video border"
+            className="max-w-xl aspect-video border"
           />
         )}
 
@@ -101,7 +101,7 @@ const ProjectCard = ({
         
         
         <div className="flex items-start  gap-6 p-6  ">
-          <div className="w-24 max-w-md aspect-video border">
+          <div className="w-36 max-w-xl aspect-video border">
             <img
               src={highlight_image}
               className="w-full h-full object-cover"

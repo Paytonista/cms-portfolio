@@ -22,7 +22,7 @@ export async function GET(req: Request) {
  
   const [experiences, total] = await Promise.all([
     await prisma.experience.findMany({
-        orderBy: { created_at: "desc" },
+        orderBy: { start_date: "desc" },
         include: { tech_skills: true },
         take: limit,                      
         skip: skip,                       

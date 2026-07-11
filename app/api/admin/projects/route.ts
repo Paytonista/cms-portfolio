@@ -29,7 +29,7 @@ export async function GET(req: Request) {
         take: limit,                      
         skip: skip,                       
       }),
-      prisma.experience.count(),
+      prisma.project.count(),
   ]);
 
   const parsed = projects.map((p) => ({
