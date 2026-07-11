@@ -122,9 +122,9 @@ export default function Home() {
     <main className="h-[calc(100vh-5rem)] font-raleway z-2" >
         
         <div className="flex flex-row justify-between px-30 py-20">
-            <div className="sticky top-20 flex flex-col h-full">
+            <div className="sticky top-20 flex flex-col h-full  w-96">
               <div className="flex flex-col h-full" >
-                <h1 className="text-5xl font-bold text-[#ffffff] mb-3 whitespace-nowrap">
+                <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
                   Kenneth Rabina
                 </h1>
                 <p className="text-[#d6d6d6] text-md mb-1">Computer Science Graduate</p>
