@@ -122,7 +122,7 @@ export default function Home() {
     <main className="min-h-[calc(100vh-5rem)] font-raleway z-2" >
         
         <div className="flex flex-row justify-between max-w-6xl mx-auto gap-16 px-8 py-20">
-            <div className="sticky top-20 flex flex-col w-full md:w-72">
+            <div className="flex flex-row justify-between max-w-6xl mx-auto gap-16 px-8 py-20 items-stretch">
               <div className="flex flex-col h-full" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 whitespace-nowrap">
                   Kenneth Rabina
