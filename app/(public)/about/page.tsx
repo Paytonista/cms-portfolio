@@ -121,7 +121,7 @@ export default function Home() {
     
     <main className="h-[calc(100vh-5rem)] font-raleway z-2" >
         
-        <div className="flex flex-row justify-between px-50 py-20">
+        <div className="flex flex-row justify-between px-30 py-20">
             <div className="sticky top-20 flex flex-col h-full">
               <div className="flex flex-col h-full" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 whitespace-nowrap">
@@ -154,7 +154,7 @@ export default function Home() {
             </div>
           <div className="flex-1 flex flex-col px-15 mx-15 max-w-full overflow-hidden">
             <section id ="aboutme" ref={aboutRef}> 
-              <div className="mb-15 text-lg">
+              <div className="mb-15 text-md">
                   <p>I’m a frontend engineer with an expertise in building accessible, pixel-perfect user interfaces. I take pride in crafting thoughtful, inclusive products and have a sharp eye for the little details that elevate user experience. I do my best work at the intersection of design and engineering, where great UX meets clean, scalable code.</p>
                   <br/>
                   <p>Currently, I'm on the component library team at Klaviyo, where I maintain and evolve the company's design system. I lead engineering efforts across components, tooling, and patterns, partnering closely with designers and engineers to ensure accessibility is built into the foundation of our products.</p>
