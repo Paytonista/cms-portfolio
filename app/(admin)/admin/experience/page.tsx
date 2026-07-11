@@ -21,6 +21,7 @@ export default function ExperiencePage() {
 
   {"Pagination"}
 
+  
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -177,6 +178,7 @@ export default function ExperiencePage() {
                 onChange={(e) => SetFormData({ ...formdata, job_description: e.target.value })}
                 className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
               />
+              
            </div>
            <div>
             <label className="block text-xs text-slate-500 mb-1 gap-1">Selected Skills</label>

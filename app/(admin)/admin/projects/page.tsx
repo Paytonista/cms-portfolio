@@ -152,6 +152,22 @@ export default function ProjectsPage() {
                 ))}
 
            </div>
+
+           <input
+            className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
+            placeholder="Type a new skill and press Enter"
+            onKeyDown={(e) => {
+               if(e.key === "Enter" && e.currentTarget.value) {
+                e.preventDefault();
+                const newSkill = e.currentTarget.value.trim();
+                if(newSkill && !formdata.tech_skills.includes(newSkill)) {
+                  SetFormData({ ...formdata, tech_skills: [...formdata.tech_skills, newSkill]});
+                }
+                e.currentTarget.value = "";
+               }
+            }}  
+            />
+            
            <label className=" text-xs text-slate-500">Highlight Image</label>
            <div className="flex flex-col justify-center items-center">
               
@@ -183,64 +199,46 @@ export default function ProjectsPage() {
             <label className="block text-xs text-slate-500 mb-1">Carousel Image ( Maximum of 4 images)</label>
            <div className="flex flex-col justify-center items-center">
               <UploadButton
-  endpoint="carousel_images"
-  onClientUploadComplete={(res) => {
-    // Append new URLs to the array (max 4)
-    const newUrls = res.map((file) => file.url);
-    SetFormData({
-      ...formdata,
-      tooltip_images: [...formdata.tooltip_images, ...newUrls].slice(0, 4),
-    });
-  }}
-  onUploadError={() => alert("Upload failed")}
+                endpoint="carousel_images"
+                onClientUploadComplete={(res) => {
+                  // Append new URLs to the array (max 4)
+                  const newUrls = res.map((file) => file.url);
+                  SetFormData({
+                    ...formdata,
+                    tooltip_images: [...formdata.tooltip_images, ...newUrls].slice(0, 4),
+                  });
+                }}
+                onUploadError={() => alert("Upload failed")}
 />
-
-{/* Show all images in the array */}
-{formdata.tooltip_images.length > 0 && (
-  <div className="flex flex-wrap gap-2 mt-2">
-    {formdata.tooltip_images.map((url, i) => (
-      <div key={url} className="relative w-24 aspect-video rounded-lg overflow-hidden border border-slate-300">
-        <img src={url} alt={`Slide ${i + 1}`} className="w-full h-full object-cover" />
-        <button
-          type="button"
-          onClick={() =>
-            SetFormData({
-              ...formdata,
-              tooltip_images: formdata.tooltip_images.filter((_, idx) => idx !== i),
-            })
-          }
-          className="absolute top-0.5 right-0.5 bg-red-500 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center"
-        >
-          &times;
-        </button>
-      </div>
-    ))}
-  </div>
-)}
-          
+              {formdata.tooltip_images.length > 0 && (
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  {formdata.tooltip_images.map((url, i) => (
+                    <div key={url} className="relative w-48 aspect-video rounded-lg overflow-hidden border border-slate-300">
+                      <img src={url} alt={`Slide ${i + 1}`} className="w-full h-full object-cover" />
+                      <button
+                        type="button"
+                        onClick={() =>
+                          SetFormData({
+                            ...formdata,
+                            tooltip_images: formdata.tooltip_images.filter((_, idx) => idx !== i),
+                          })
+                        }
+                        className="absolute top-0.5 right-0.5 bg-red-500 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center"
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+                        
             <div className="flex flex-col justify-center items-center">
               
               
 
             
            </div>
-            <input
-            className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm"
-            placeholder="Type a new skill and press Enter"
-            onKeyDown={(e) => {
-               if(e.key === "Enter" && e.currentTarget.value) {
-                e.preventDefault();
-                const newSkill = e.currentTarget.value.trim();
-                if(newSkill && !formdata.tech_skills.includes(newSkill)) {
-                  SetFormData({ ...formdata, tech_skills: [...formdata.tech_skills, newSkill]});
-                }
-                e.currentTarget.value = "";
-               }
-            }}
-            
-            
-            
-            />
+           
 
 
            </div>
@@ -274,7 +272,7 @@ export default function ProjectsPage() {
             }}
             onDelete={(id) => {
               if(confirm("Delete this project")) {
-                fetch(`/api/admin/experience?id=${id}`, {method : "DELETE"})
+                fetch(`/api/admin/projects?id=${id}`, {method : "DELETE"})
                   .then((req) => {
                       if (req.ok) setProjects((prev) => prev.filter((e) => e.id !== id));
                   });

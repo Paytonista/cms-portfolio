@@ -8,140 +8,44 @@ import ExperienceCard from "@/app/components/ExperienceCard";
 import ProjectCard from "@/app/components/ProjectCard";
 import MouseGlow from "@/app/components/MouseGlow";
 
+interface Experience {
+  id: string;
+  role: string;
+  tech_company: string;
+  active: boolean;
+  start_date: Date;
+  end_date: Date | null;
+  location: string;
+  job_description: string;
+  tech_skills: { TechnologyName: string }[];
+}
+
+interface Project {
+  id : string;
+  project_name: string;
+  details: string;
+  highlight_image: string;
+  tooltip_images: string[];
+  tech_skills: { TechnologyName: string }[];
+}
+
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState("about");
   const aboutRef = useRef<HTMLElement | null>(null);
   const experienceRef = useRef<HTMLElement | null>(null);
   const projectsRef = useRef<HTMLElement | null>(null);
-  const experiences = [
-  {
-    id: "1",
-    order: "01",
-    role: "Senior Full Stack Developer",
-    tech_company: "TechCorp Solutions",
-    active: true,
-    start_date: new Date("2024-01-15"),
-    end_date: new Date("2026-06-11"),
-    location: "Manila, Philippines",
-    job_description:
-      "Leading development of enterprise-level web applications using React and Node.js. Architected microservices infrastructure serving 500k+ daily users. Mentored a team of 5 junior developers and established CI/CD pipelines reducing deployment time by 60%.",
-    tech_skills: [
-      { TechnologyName: "React" },
-      { TechnologyName: "TypeScript" },
-      { TechnologyName: "Node.js" },
-      { TechnologyName: "PostgreSQL" },
-      { TechnologyName: "AWS" },
-    ],
-  },
-  {
-    id: "2",
-    order: "02",
-    role: "Full Stack Developer",
-    tech_company: "Digital Innovations Inc.",
-    active: false,
-    start_date: new Date("2022-03-01"),
-    end_date: new Date("2023-12-31"),
-    location: "Cebu, Philippines",
-    job_description:
-      "Built and maintained multiple client-facing web applications. Developed RESTful APIs and integrated third-party services including payment gateways and analytics platforms. Improved application performance by 40% through code optimization and caching strategies.",
-    tech_skills: [
-      { TechnologyName: "React" },
-      { TechnologyName: "JavaScript" },
-      { TechnologyName: "Express.js" },
-      { TechnologyName: "MongoDB" },
-      { TechnologyName: "Docker" },
-    ],
-  },
-  {
-    id: "3",
-    order: "03",
-    role: "Frontend Developer",
-    tech_company: "Creative Web Studio",
-    active: false,
-    start_date: new Date("2021-01-10"),
-    end_date: new Date("2022-02-28"),
-    location: "Manila, Philippines",
-    job_description:
-      "Developed responsive and accessible user interfaces for e-commerce and SaaS platforms. Collaborated with UX designers to implement pixel-perfect designs. Introduced component library standards adopted across the organization.",
-    tech_skills: [
-      { TechnologyName: "React" },
-      { TechnologyName: "Tailwind CSS" },
-      { TechnologyName: "Next.js" },
-      { TechnologyName: "Figma" },
-    ],
-  },
-  {
-    id: "4",
-    order: "04",
-    role: "Junior Web Developer",
-    tech_company: "StartUp Labs PH",
-    active: false,
-    start_date: new Date("2020-06-01"),
-    end_date: new Date("2020-12-31"),
-    location: "Davao, Philippines",
-    job_description:
-      "Assisted in building MVPs for early-stage startups. Implemented frontend features from wireframes and contributed to backend API development. Participated in daily stand-ups and agile sprint planning.",
-    tech_skills: [
-      { TechnologyName: "HTML" },
-      { TechnologyName: "CSS" },
-      { TechnologyName: "JavaScript" },
-      { TechnologyName: "PHP" },
-      { TechnologyName: "MySQL" },
-    ],
-  },
-  ];
+  const [loading, setLoading] = useState(true);
+  
+  const [availableSkills, setAvailableSkills] = useState<string[]>([]);
+  const [editExperience, setEditExperience] =  useState<Experience | null> (null);
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  const projects = [
-    {
-      project_name: "E-Commerce Platform",
-      details: "Built a full-featured e-commerce platform with real-time inventory management, payment gateway integration, and admin dashboard serving 10k+ daily transactions.",
-      highlight_image: "/images/sampleimages/sample-image.png",
-      tooltip_images: [],
-      tech_skills: [
-        { TechnologyName: "Next.js" },
-        { TechnologyName: "TypeScript" },
-        { TechnologyName: "Stripe" },
-        { TechnologyName: "PostgreSQL" },
-        { TechnologyName: "Docker" },
-      ],
-    },
-    {
-      project_name: "Task Management App",
-      details: "A Kanban-style project management tool with drag-and-drop, real-time collaboration via WebSockets, and role-based access control.",
-      highlight_image: "/images/sampleimages/sample-image.png",
-      tooltip_images: [],
-      tech_skills: [
-        { TechnologyName: "React" },
-        { TechnologyName: "Node.js" },
-        { TechnologyName: "Socket.io" },
-        { TechnologyName: "MongoDB" },
-      ],
-    },
-    {
-      project_name: "Weather Dashboard",
-      details: "Interactive weather visualization dashboard pulling data from OpenWeather API with historical trends, 7-day forecasts, and location-based alerts.",
-      highlight_image: "/images/sampleimages/sample-image.png",
-      tooltip_images: [],
-      tech_skills: [
-        { TechnologyName: "React" },
-        { TechnologyName: "Chart.js" },
-        { TechnologyName: "Tailwind CSS" },
-        { TechnologyName: "REST API" },
-      ],
-    },
-    {
-      project_name: "CMS Portfolio",
-      details: "Headless CMS-driven portfolio website with admin dashboard, analytics tracking, and dynamic content management for experience and projects.",
-      highlight_image: "/images/sampleimages/sample-image.png",
-      tooltip_images: [ "/images/sampleimages/sample-image-2.png", "/images/sampleimages/sample-image-3.png"],
-      tech_skills: [
-        { TechnologyName: "Next.js" },
-        { TechnologyName: "TypeScript" },
-        { TechnologyName: "NextAuth" },
-        { TechnologyName: "Tailwind CSS" },
-      ],
-    },
-  ];
+  const limit = 5;
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
 
   const scrollToSection = (section: string) => {
     const options: ScrollIntoViewOptions = {
@@ -153,6 +57,12 @@ export default function Home() {
   if (section === "experience") experienceRef.current?.scrollIntoView(options);
   if (section === "projects") projectsRef.current?.scrollIntoView(options);
 };
+
+  useEffect(() => {
+    fetch("/api/public/skills")
+      .then((res) => res.json())
+      .then((data) => setAvailableSkills(data.map((s: any) => s.TechnologyName)));
+  }, []);
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -168,6 +78,42 @@ export default function Home() {
 
     return () => sections.forEach(section => observer.unobserve(section)); // ← cleanup
   }, []);
+
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/public/experience?page=${page}&limit=${limit}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setExperiences(
+          data.experiences.map((exp: any) => ({
+            ...exp,
+            start_date: new Date(exp.start_date),
+            end_date: exp.end_date ? new Date(exp.end_date) : null
+          }))
+        );
+        setTotalPages(data.totalPages);
+        setLoading(false);
+      });
+      
+  }, [page]);
+  
+
+    useEffect(() => {
+    setLoading(true);
+    fetch(`/api/public/projects?page=${page}&limit=${limit}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setProjects(
+          data.projects.map((project: any) => ({
+            ...project,
+          }))
+        );
+        setTotalPages(data.totalPages);
+        setLoading(false);
+      });
+      
+  }, [page]);
 
 
 

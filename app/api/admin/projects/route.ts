@@ -19,6 +19,8 @@ export async function GET(req: Request) {
   const limit = Number(searchParams.get("limit")) || 10;
   const page = Number(searchParams.get("page")) || 1;
   const skip = (page - 1) * limit;
+
+ 
  
   const [projects, total] = await Promise.all([
     await prisma.project.findMany({
@@ -30,7 +32,12 @@ export async function GET(req: Request) {
       prisma.experience.count(),
   ]);
 
-  return NextResponse.json({ projects, total, page, totalPages: Math.ceil(total / limit) }, { status: 200 });
+  const parsed = projects.map((p) => ({
+  ...p,
+  tooltip_images: JSON.parse(p.tooltip_images || "[]"),
+}));
+
+  return NextResponse.json({ projects : parsed, total, page, totalPages: Math.ceil(total / limit) }, { status: 200 });
   
 }
 
@@ -45,10 +52,13 @@ export async function POST(req: Request) {
       create: { TechnologyName: skill.TechnologyName },
     });
   }
+
+  
  
   const project = await prisma.project.create({
     data: {
         ...body,
+        tooltip_images: JSON.stringify(body.tooltip_images || []),
         tech_skills: {
             connect: body.tech_skills.map((skill: { TechnologyName: string }) => ({
                 TechnologyName: skill.TechnologyName,
@@ -56,6 +66,7 @@ export async function POST(req: Request) {
         },
     }
   });
+
 
 
   return NextResponse.json(project, { status: 201 });
@@ -78,6 +89,7 @@ export async function PATCH(req: Request) {
     where: {id: body.id},
     data: {
       ...body,
+      tooltip_images: JSON.stringify(body.tooltip_images || []),
       tech_skills: {
         set: body.tech_skills.map((s) => ({ TechnologyName: s.TechnologyName})),
       },

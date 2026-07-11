@@ -72,26 +72,18 @@ const DashboardProjectPanel = ({ id, project_name, details, highlight_image, too
                     
                     <div className="w-full aspect-video max-w-xs text-center  ">
                         <label> Highlight Image</label>
-                        <img src="https://l8zje028s7.ufs.sh/f/OHWUQDzpm86O2FHIuPNOAWlKbgTDIU0LwnrtmCsjX1M6PpSE" />
+                        <img className="w-full aspect-video max-w-lg"src={highlight_image} />
                     
                     </div>  
-                    <div className="w-full aspect-video max-w-xs text-center border">
-                        Tooltip Image
                     
-                    </div>  
-                    <div className="w-full aspect-video max-w-xs text-center border">
-                        Tooltip Image
-                    
-                    </div>  
-                    <div className="w-full aspect-video max-w-xs text-center border">
-                        Tooltip Image
-                    
-                    </div>  
-                    <div className="w-full aspect-video max-w-xs text-center border">
-                        Tooltip Image
-                    
-                    </div>  
-                      
+                        {tooltip_images.map((src) => 
+                        
+                        <div className=" text-center" key={src}>
+                        <label> Tooltip Image</label>
+                        <img className="w-full aspect-video max-w-lg" src={src} />
+                         </div>  
+                        )}
+                                  
                 </div>
             </div>
         </>
