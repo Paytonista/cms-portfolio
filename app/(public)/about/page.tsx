@@ -152,7 +152,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          <div className="flex-1 flex flex-col max-w-full overflow-hidden pl-10">
+          <div className="flex-1 flex flex-col max-w-full overflow-hidden pl-30">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md">
                   <p>I’m a frontend engineer with an expertise in building accessible, pixel-perfect user interfaces. I take pride in crafting thoughtful, inclusive products and have a sharp eye for the little details that elevate user experience. I do my best work at the intersection of design and engineering, where great UX meets clean, scalable code.</p>
