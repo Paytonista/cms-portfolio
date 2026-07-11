@@ -55,7 +55,7 @@ const ExperienceCard = ({
               {tech_company}
             </a>
           </div>
-          <div className="mt-2 text-gray-600">
+          <div className="mt-2 text-gray-600 wrap-break-word">
             <p>{job_description}</p>
           </div>
           <div className="mt-4 flex gap-2">
