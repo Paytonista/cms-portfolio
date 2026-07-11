@@ -121,7 +121,7 @@ export default function Home() {
     
     <main className="h-[calc(100vh-5rem)] font-raleway z-2" >
         
-        <div className="flex flex-row justify-between px-10 py-20">
+        <div className="flex flex-row justify-between px-30 py-20">
             <div className="sticky top-20 flex flex-col h-full w-full md:w-72">
               <div className="flex flex-col h-full" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 whitespace-nowrap">
