@@ -35,7 +35,7 @@ const DashboardExperiencePanel = ({ id, role, tech_company, active, start_date, 
                         <div className="text-xs flex gap-2 text-light tracking-tight py-1">
                             <div className="flex">
                                 <Calendar className="w-4 h-4 mr-0.5"/>
-                                {end_date ? <div>{start_date.toLocaleDateString()} - {end_date.toLocaleDateString()}</div>  : <div>Present</div>}
+                                {end_date ? <div>{start_date.toLocaleDateString()} - {end_date.toLocaleDateString()}</div>  : <div>{start_date.toLocaleDateString()} - Present</div>}
                                 
                             </div> 
         

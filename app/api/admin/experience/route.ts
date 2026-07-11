@@ -65,6 +65,15 @@ export async function PATCH(req: Request) {
 
   const body = await req.json();
 
+  for (const skill of body.tech_skills) {
+    await prisma.techSkill.upsert({
+      where: { TechnologyName: skill.TechnologyName },
+      update: {},
+      create: { TechnologyName: skill.TechnologyName },
+    });
+  }
+ 
+
   const experience = await prisma.experience.update({
     where: {id: body.id},
     data: {
