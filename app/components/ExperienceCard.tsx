@@ -38,7 +38,7 @@ const ExperienceCard = ({
         border border-transparent rounded-sm hover:shadow-2xl hover:cursor-pointer hover:bg-[#072037] hover:border-gray-800
       "
     >
-      <div className="flex items-start  gap-6 p-6  ">
+      <div className="flex items-start  gap-3 p-3  ">
         <div className="w-24 shrink-0">
           <div className="flex flex-col text-sm text-gray-400 whitespace-nowrap py-1 text-center">
               {active && <span className="text-green-400 font-semibold">Active</span>}
@@ -55,8 +55,8 @@ const ExperienceCard = ({
               {tech_company}
             </a>
           </div>
-          <div className="mt-2 text-gray-600 wrap-break-word">
-            <p className="wrap-break-word">{job_description}</p>
+          <div className="mt-2 text-gray-600">
+            <p className="break-word">{job_description}</p>
           </div>
           <div className="mt-4 flex gap-2">
             {tech_skills.map((tech_skill) => (
