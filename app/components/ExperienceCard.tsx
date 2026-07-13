@@ -37,10 +37,10 @@ const ExperienceCard = ({
         border border-transparent rounded-sm hover:shadow-2xl hover:cursor-pointer hover:bg-[#072037] hover:border-gray-800
       "
     >
-      <div className="flex items-start gap-3 p-3 w-full min-w-0">
+      <div className="flex items-start gap-3 p-1 w-full min-w-0">
         <div className="w-24 shrink-0">
-          <div className="flex flex-col text-sm text-gray-400 whitespace-nowrap py-1 text-center ">
-            {end_date ? <div className="text-sm">{start_date?.toLocaleDateString()} - {end_date?.toLocaleDateString()}</div> : <div>{start_date?.toLocaleDateString()} - Active</div>}
+          <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap py-1 text-center ">
+            {start_date?.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {end_date ? end_date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "Active"}
               
              
           </div>
