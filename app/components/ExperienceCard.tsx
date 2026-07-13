@@ -39,7 +39,7 @@ const ExperienceCard = ({
     >
       <div className="flex items-start gap-3 p-3 w-full min-w-0">
         <div className="w-24 shrink-0">
-          <div className="flex flex-col text-sm text-gray-400 whitespace-nowrap py-1 text-center">
+          <div className="flex flex-col text-sm text-gray-400 whitespace-nowrap py-1 text-center text-sx">
             {end_date ? <div>{start_date?.toLocaleDateString()} - {end_date?.toLocaleDateString()}</div> : <div>{start_date?.toLocaleDateString()} - Active</div>}
               
              
