@@ -56,7 +56,7 @@ const ExperienceCard = ({
             </a>
           </div>
           <div className="mt-2 text-gray-600">
-            <p className="break-words">{job_description}</p>
+            <p className="line-clamp-4 text-ellipsis">{job_description}</p>
           </div>
           <div className="mt-4 flex gap-2">
             {tech_skills.map((tech_skill) => (
@@ -67,7 +67,6 @@ const ExperienceCard = ({
         </div>
         
       </div>
-
 
 
 
