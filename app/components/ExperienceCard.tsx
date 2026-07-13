@@ -1,7 +1,6 @@
 
 import TechCard ,{ TechCardProps } from "@/app/components/TechCard";
 import {getMonthDifference} from "@/app/utils/date/getmonths"
-import { start } from "repl";
 
 
 interface ExperienceCardProps {
@@ -30,15 +29,15 @@ const ExperienceCard = ({
   tech_skills: tech_skills
 }: ExperienceCardProps) => {
   return (
-    <div
+     <div
       onClick={onClick}
       className="
-         flex items-center gap-3 group text-sm m-4
+         flex items-center gap-3 group text-sm m-4 w-full max-w-full
         transition-all duration-100
         border border-transparent rounded-sm hover:shadow-2xl hover:cursor-pointer hover:bg-[#072037] hover:border-gray-800
       "
     >
-      <div className="flex items-start  gap-3 p-3  ">
+      <div className="flex items-start gap-3 p-3 w-full min-w-0">
         <div className="w-24 shrink-0">
           <div className="flex flex-col text-sm text-gray-400 whitespace-nowrap py-1 text-center">
               {active && <span className="text-green-400 font-semibold">Active</span>}
@@ -56,7 +55,7 @@ const ExperienceCard = ({
             </a>
           </div>
           <div className="mt-2 text-gray-600">
-            <p className="line-clamp-4 text-ellipsis">{job_description}</p>
+            <p className="line-clamp-4 break-words">{job_description}</p>
           </div>
           <div className="mt-4 flex gap-2">
             {tech_skills.map((tech_skill) => (
@@ -67,10 +66,6 @@ const ExperienceCard = ({
         </div>
         
       </div>
-
-
-
-      
     </div>
   );
 };
