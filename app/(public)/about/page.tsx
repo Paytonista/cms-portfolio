@@ -180,7 +180,7 @@ export default function Home() {
                     <ExperienceCard key={experience.id} {...experience}></ExperienceCard>
                 ))}
 
-                <p><a>View Resume</a></p>
+                <p><a href="/resume/rabina_kenneth_c_resume1.pdf" target="_blank">View Resume</a></p>
               </div>
             </section>
 
