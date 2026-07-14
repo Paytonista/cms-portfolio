@@ -70,7 +70,7 @@ const ProjectCard = ({
             e.stopPropagation();
             goPrevious();
           }}
-            className={`z-51 transition-opacity duration-200 ${ currentIndex === 0 ? "opacity-0" : "opacity-100" }`}
+            className={`relative z-51 transition-opacity duration-200 ${ currentIndex === 0 ? "opacity-0" : "opacity-100" }`}
             >
             <ChevronLeftIcon />
           </button>        
@@ -81,7 +81,7 @@ const ProjectCard = ({
             key={tooltip_images[currentIndex]}
             src={tooltip_images[currentIndex]}
             loading="lazy"
-            className="max-w-4xl aspect-video border"
+            className="max-w-4xl aspect-video  relative z-51"
           />
         )}
 
@@ -90,7 +90,7 @@ const ProjectCard = ({
             e.stopPropagation();
             goNext();
           }}
-            className={`z-51 transition-opacity duration-200 ${ currentIndex === tooltip_images.length - 1 ? "opacity-0" : "opacity-100" }` }
+            className={`relative z-51 transition-opacity duration-200 ${ currentIndex === tooltip_images.length - 1 ? "opacity-0" : "opacity-100" }` }
             >
             <ChevronRightIcon/>
           </button>        
