@@ -122,7 +122,7 @@ export default function Home() {
 
   return (
     
-    <main className="h-[calc(100vh-5rem)] font-raleway z-2 flex overflow-y-auto" >
+    <main className="h-[calc(100vh-5rem)] font-raleway z-2 flex overflow-y-auto min-h-0"  >
         <div className="flex flex-row justify-between px-30 py-20 items-stretch">
             <div className="sticky top-20 flex flex-col h-[calc(100vh-10rem)] w-96">
               <div className="flex flex-col" >
@@ -154,7 +154,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          <div className="flex-1 flex flex-col max-w-full overflow-hidden pl-45">
+          <div className="flex-1 flex flex-col max-w-full pl-45">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md">
                   <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
