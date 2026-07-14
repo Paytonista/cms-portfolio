@@ -81,7 +81,7 @@ const ProjectCard = ({
             key={tooltip_images[currentIndex]}
             src={tooltip_images[currentIndex]}
             loading="lazy"
-            className="max-w-xl aspect-video border"
+            className="max-w-4xl aspect-video border"
           />
         )}
 
