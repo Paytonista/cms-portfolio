@@ -26,7 +26,7 @@ const PortfolioButton = ({
     >
       <span className={`
         h-0.5 bg-current transition-all
-        ${isActive ? "w-12" : "w-8 group-hover:w-15"}
+        ${isActive ? "lg:w-12" : "lg:w-8 group-hover:w-15"}
       `}></span>
       {children}
     </button>

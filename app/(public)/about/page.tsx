@@ -122,10 +122,10 @@ export default function Home() {
   }, [page]);
   return (
     
-    <main className="h-[calc(100vh-5rem)] font-raleway z-2">
+    <main className="lg:h-[calc(100vh-5rem)] font-raleway z-2">
         <div className="flex flex-col px-5 py-5
                         lg:flex-row lg:px-30 lg:py-20 h-full">
-            <div className="w-96 flex-shrink-0 flex flex-col h-full">
+            <div className="w-90 lg:w-96 flex-shrink-0 flex flex-col h-full">
               
                 <h1 className="text-[#ffffff] font-bold text-4xl
                                  lg:text-5xl   lg:mb-3 ">
@@ -134,47 +134,50 @@ export default function Home() {
                 <p className="text-[#d6d6d6] 
                   lg:text-md mb-1">Computer Science Graduate</p>
                 <p className="text-[#989898] text-xs">Passionate about software development, technology, and creating user-focused applications. Always eager to learn, build, and grow as a developer.</p>
-                <div className=" flex flex-row 
-                  lg:flex-col lg:mt-4">
+                <div className=" flex flex-row order-2
+                  lg:flex-col lg:mt-4 lg:order-1">
                   <PortfolioButton isActive={activeSection === "aboutme"} onClick={() => scrollToSection("aboutme")} >About Me</PortfolioButton>
                   <PortfolioButton isActive={activeSection === "experience"} onClick={() => scrollToSection("experience")}>Experiences</PortfolioButton>
                   <PortfolioButton isActive={activeSection === "projects"} onClick={() => scrollToSection("projects")}>Projects</PortfolioButton>
                 </div>
-                <div className=" mt-50">
-                  <div className="mt-6 flex  ">
+                <div className="order-1
+                lg:mt-50 lg:order-2">
+                  <div className="mt-2 lg:mt-6 flex border-b p-1 ">
                     <a href="https://www.facebook.com/kenneth.rabina.3" className="px-1 py-1 " target="_blank">
-                      <img src="https://img.icons8.com/?size=100&id=118467&format=png&color=FFFFFF" className="w-10 h-10"></img>
+                      <img src="https://img.icons8.com/?size=100&id=118467&format=png&color=FFFFFF" className="w-5 h-5 lg:w-12 lg:h-12"></img>
                     </a>
                     <a href="https://github.com/Paytonista" className="px-1 py-1  " target="_blank">
-                      <img src="https://img.icons8.com/?size=100&id=12599&format=png&color=FFFFFF" className="w-10 h-10"></img>
+                      <img src="https://img.icons8.com/?size=100&id=12599&format=png&color=FFFFFF" className="w-5 h-5 lg:w-12 lg:h-12"></img>
                     </a>
                     <a href="https://www.linkedin.com/in/kenneth-rabina-856b4a244/" className="px-1 py-1  " target="_blank">
-                      <img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" className="w-10 h-10"></img>
+                      <img src="https://img.icons8.com/?size=100&id=8808&format=png&color=FFFFFF" className="w-5 h-5 lg:w-12 lg:h-12"></img>
                     </a> 
-                    
                  </div>
                  <p className="text-[#fdfdfd4e] text-xs m-1">Built with Next.js and a custom CMS developed by Kenneth Rabina.</p>
                 </div>
              
             </div>
-          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full lg:pl-45 no-scrollbar">
-            <section id ="aboutme" ref={aboutRef}> 
-              <div className="mb-15 text-md text-justify">
-                  <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
-                    and continuously expanding my skills across different areas of technology. I enjoy solving problems through code,
-                     exploring new tools and frameworks, and turning ideas into reliable software solutions. 
-                     Whether it's web development, backend systems, or cybersecurity, I'm always eager to learn and take
-                      on new challenges.</p>
-                  <br/>
-                  <p>I have experience developing full-stack applications using modern technologies such as 
+          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full pl-2 lg:pl-35 no-scrollbar">
+            <section id ="aboutme" ref={aboutRef} > 
+              <div className="mb-15 text-xs lg:text-lg text-justify leading-loose space-y-4">
+                  <div> 
+                    <p>
+                      Aspiring software developer with a strong interest in building practical, user-focused applications. 
+                      I enjoy solving problems through code and turning ideas into reliable software — whether that's web development, backend systems, or cybersecurity.
+                    </p>
+                  </div>
+                  <p>
+                    I have experience developing full-stack applications using modern technologies such as 
                     React, Next.js, TypeScript, FastAPI, Python, and SQL databases. Through personal and academic 
                     projects, I've strengthened my understanding of software design, API development, database management, 
-                    and responsive user interfaces while focusing on writing clean, maintainable, and scalable code.</p>
-                  <br/>
-                  <p>I'm currently seeking opportunities in software engineering, 
+                    and responsive user interfaces while focusing on writing clean, maintainable, and scalable code.
+                  </p>
+           
+                  <p>
+                    I'm currently seeking opportunities in software engineering, 
                     programming, or cybersecurity where I can contribute, continue learning, 
-                    and grow alongside experienced professionals.</p>
-                  <br/>
+                    and grow alongside experienced professionals.
+                  </p>
                 </div>
             </section>
             <section id ="experience" ref={experienceRef}> 
@@ -183,7 +186,7 @@ export default function Home() {
                     <ExperienceCard key={experience.id} {...experience}></ExperienceCard>
                 ))}
 
-                <p><a href="/resume/rabina_kenneth_c_resume1.pdf" target="_blank">View Resume</a></p>
+                <p><a href="/resume/rabina_kenneth_c_resume1.pdf" target="_blank" rel="noreferrer">View Resume</a></p>
               </div>
             </section>
 
