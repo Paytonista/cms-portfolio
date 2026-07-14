@@ -42,15 +42,12 @@ const ProjectCard = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-
       onClick={onClick ? onClick : () => setOpen(!isOpen)}
       className="
         relative flex items-center gap-3 group text-sm m-4 w-full
         transition-all duration-100
         hover:shadow-lg 
-        cursor-pointer
-        
-        
+        cursor-pointer      
       "
     > <div
         onClick = {(e) => {
@@ -106,13 +103,13 @@ const ProjectCard = ({
         
         
         <div className="flex items-start  gap-6 p-6 w-full min-w-0 ">
-          <div className="w-48 max-w-xl aspect-video border shrink-0">
+          <div className="md:w-38 lg:w-48 max-w-xl aspect-video border shrink-0">
             <img
               src={highlight_image}
               className="w-full h-full object-cover"
             />
             
-            
+      
             
           </div>
 

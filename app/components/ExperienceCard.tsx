@@ -36,7 +36,7 @@ const ExperienceCard = ({
       transition={{ duration: 0.6 }}
       onClick={onClick}
       className="
-         flex items-center gap-3 group text-sm m-4 w-full max-w-full p-1
+        flex items-center gap-3 group text-sm sm:m-1 lg:m-4 w-full max-w-full p-1
         transition-all duration-100
         border border-transparent rounded-sm hover:shadow-2xl hover:cursor-pointer hover:bg-[#072037] hover:border-gray-800
       "

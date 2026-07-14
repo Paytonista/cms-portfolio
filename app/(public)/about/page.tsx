@@ -124,6 +124,7 @@ export default function Home() {
     
     <main className="lg:h-[calc(100vh-5rem)] font-raleway z-2">
         <div className="flex flex-col px-5 py-5
+                        md:flex-row md:px-20 md:py-15
                         lg:flex-row lg:px-30 lg:py-20 h-full">
             <div className="w-90 lg:w-96 flex-shrink-0 flex flex-col h-full">
               
@@ -142,7 +143,7 @@ export default function Home() {
                 </div>
                 <div className="order-1
                 lg:mt-50 lg:order-2">
-                  <div className="mt-2 lg:mt-6 flex border-b p-1 ">
+                  <div className="mt-2 lg:mt-6 flex p-1 ">
                     <a href="https://www.facebook.com/kenneth.rabina.3" className="px-1 py-1 " target="_blank">
                       <img src="https://img.icons8.com/?size=100&id=118467&format=png&color=FFFFFF" className="w-5 h-5 lg:w-12 lg:h-12"></img>
                     </a>
@@ -157,7 +158,7 @@ export default function Home() {
                 </div>
              
             </div>
-          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full pl-2 lg:pl-35 no-scrollbar">
+          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full pl-2 md:pl-25 lg:pl-35 no-scrollbar">
             <section id ="aboutme" ref={aboutRef} > 
               <div className="mb-15 text-xs lg:text-lg text-justify leading-loose space-y-4">
                   <div> 
