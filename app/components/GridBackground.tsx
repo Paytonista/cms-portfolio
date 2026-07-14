@@ -8,6 +8,14 @@ interface Wave {
   startTime: number;
 }
 
+interface Light {
+  axis: "h" | "v";     // travels along a horizontal or vertical line
+  line: number;         // the fixed coordinate (y for h, x for v)
+  pos: number;          // current position along the line
+  dir: 1 | -1;
+  speed: number;        // px per second
+  trail: { x: number; y: number }[];
+}
 export default function GridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -9999, y: -9999 });
@@ -26,6 +34,12 @@ export default function GridBackground() {
     const waveLife = 1500;      // ms before a wave fully fades
     const waveWidth = 120;      // thickness of the ripple band
     const waveStrength = 60;    // max push from a wave
+
+    //light tuning
+    const maxLights = 10;
+    const minLightSpeed = 250;
+    const maxLightSpeed = 300;
+    const lightSpawnInterval = 1000;
 
     let raf: number;
 
@@ -49,6 +63,16 @@ export default function GridBackground() {
       });
     };
     window.addEventListener("pointerdown", handleClick);
+
+    //spawn light
+
+    const spawnLight = () => {
+      const axis: "h" | "v" = Math.random() < 0.5 ? "h" : "v";
+      const dir: 1 | -1 = Math.random() < 0.5 ? 1 : -1;
+      const speed = minLightSpeed + Math.random() * (maxLightSpeed - minLightSpeed);
+
+
+    }
 
     // hover push
     const hoverDistort = (x: number, y: number) => {
