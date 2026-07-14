@@ -6,9 +6,8 @@ export interface TechCardProps  {
 const TechCard = ({ TechnologyName }: TechCardProps) => {
   return (
     <div
-      
       className={`
-       rounded-xl px-3 py-1 bg-[#0F4C75]
+       rounded-xl px-2 lg:px-3 lg:py-1 bg-[#0F4C75]
       `}
     >
       <p className="text-[#BBE1FA] font-bold text-xs"> 

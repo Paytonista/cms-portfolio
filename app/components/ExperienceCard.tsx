@@ -41,7 +41,7 @@ const ExperienceCard = ({
         border border-transparent rounded-sm hover:shadow-2xl hover:cursor-pointer hover:bg-[#072037] hover:border-gray-800
       "
     >
-      <div className="flex flex-col lg:flex-row items-start gap-3 p-1 w-full min-w-0">
+      <div className="flex flex-col lg:flex-row items-start gap-3 w-full min-w-0">
         <div className="w-37 shrink-0">
           <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap text-center ">
             {start_date?.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {end_date ? end_date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "Active"}       
@@ -59,7 +59,7 @@ const ExperienceCard = ({
             </a>
           </div>
           <div className="mt-2 text-gray-600">
-            <p className="line-clamp-4 break-words">{job_description}</p>
+            <p className="line-clamp-4 break-words text-xs lg:text-xs">{job_description}</p>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             {tech_skills.map((tech_skill) => (
