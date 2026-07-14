@@ -40,6 +40,7 @@ export default function Home() {
   
   const [availableSkills, setAvailableSkills] = useState<string[]>([]);
   const [editExperience, setEditExperience] =  useState<Experience | null> (null);
+   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
 
@@ -77,7 +78,7 @@ export default function Home() {
 
           if (visible) setActiveSection(visible.target.id);
         },
-        { threshold: 0, rootMargin: "-45% 0px -45% 0px" }
+       { root: scrollContainerRef.current, threshold: 0, rootMargin: "-45% 0px -45% 0px" }
       );
 
       sections.forEach((section) => observer.observe(section));
@@ -121,10 +122,10 @@ export default function Home() {
   }, [page]);
   return (
     
-    <main className="h-[calc(100vh-5rem)] font-raleway z-2 overflow-y-auto" >
-        <div className="grid grid-cols-[24rem_1fr] gap-x-8 px-30 py-20">
-            <div className="sticky top-20 self-start flex flex-col w-96">
-              <div className="flex flex-col h-full">
+    <main className="h-[calc(100vh-5rem)] font-raleway z-2">
+        <div className="flex flex-row px-30 py-20 h-full">
+            <div className="w-96 flex-shrink-0 flex flex-col h-full">
+              
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
                   Kenneth Rabina
                 </h1>
@@ -151,9 +152,9 @@ export default function Home() {
                  </div>
                  <p className="text-[#fdfdfd4e] text-xs m-1">Built with Next.js and a custom CMS developed by Kenneth Rabina.</p>
                 </div>
-              </div>
+             
             </div>
-          <div className="flex flex-col max-w-full overflow-hidden">
+          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full pl-45">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md">
                   <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
