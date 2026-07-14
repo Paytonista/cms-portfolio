@@ -122,8 +122,8 @@ export default function Home() {
 
   return (
     
-    <main className="h-[calc(100vh-5rem)] font-raleway z-2 flex overflow-y-auto"  >
-        <div className="flex flex-row justify-between px-30 py-20 items-stretch">
+    <main className="h-[calc(100vh-5rem)] flex overflow-y-auto font-raleway z-2 px-30 py-20" >
+  
             <div className="sticky top-20 flex flex-col h-[calc(100vh-10rem)] w-96">
               <div className="flex flex-col" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
@@ -192,8 +192,7 @@ export default function Home() {
                 <p><a href="/works">View All Works</a></p>
               </div>
             </section>
-          </div>
-        </div>    
+          </div> 
         <GridBackground />
         <MouseGlow />
     </main>
