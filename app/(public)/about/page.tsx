@@ -124,8 +124,8 @@ export default function Home() {
     
     <main className="h-[calc(100vh-5rem)] flex overflow-y-auto font-raleway z-2 px-30 py-20" >
   
-            <div className="sticky top-20 flex flex-col h-[calc(100vh-10rem)] w-96">
-              <div className="flex flex-col" >
+            <div className="sticky top-20 shrink-0 self-start flex flex-col h-[calc(100vh-10rem)] w-96">
+              <div className="flex flex-col h-full" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
                   Kenneth Rabina
                 </h1>
@@ -137,7 +137,7 @@ export default function Home() {
                   <PortfolioButton isActive={activeSection === "experience"} onClick={() => scrollToSection("experience")}>Experiences</PortfolioButton>
                   <PortfolioButton isActive={activeSection === "projects"} onClick={() => scrollToSection("projects")}>Projects</PortfolioButton>
                 </div>
-                <div className=" mt-50">
+                <div className="mt-auto">
                   <div className="mt-6 flex  ">
                     <a href="https://www.facebook.com/kenneth.rabina.3" className="px-1 py-1 " target="_blank">
                       <img src="https://img.icons8.com/?size=100&id=118467&format=png&color=FFFFFF" className="w-10 h-10"></img>
@@ -154,7 +154,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          <div className="flex-1 flex flex-col max-w-full overflow-hidden pl-45">
+          <div className="flex-1 flex flex-col min-w-0 pl-45">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md">
                   <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
