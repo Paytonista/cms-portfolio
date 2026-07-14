@@ -65,20 +65,24 @@ export default function Home() {
       .then((data) => setAvailableSkills(data.map((s: any) => s.TechnologyName)));
   }, []);
 
-  useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    useEffect(() => {
+      if (loading) return; // wait until data (and therefore section heights) are settled
 
-      if (visible) setActiveSection(visible.target.id);
-    }, { threshold: 0.2 });
+      const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((e) => e.isIntersecting)
+            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
 
-    sections.forEach(section => observer.observe(section));   
+          if (visible) setActiveSection(visible.target.id);
+        },
+        { threshold: 0, rootMargin: "-45% 0px -45% 0px" }
+      );
 
-    return () => sections.forEach(section => observer.unobserve(section)); // ← cleanup
-  }, []);
+      sections.forEach((section) => observer.observe(section));
+      return () => sections.forEach((section) => observer.unobserve(section));
+    }, [loading, experiences, projects]);
 
 
   useEffect(() => {
