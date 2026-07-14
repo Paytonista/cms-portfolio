@@ -123,16 +123,19 @@ export default function Home() {
   return (
     
     <main className="h-[calc(100vh-5rem)] font-raleway z-2">
-        <div className="flex flex-row px-30 py-20 h-full">
+        <div className="flex flex-col px-5 py-5
+                        lg:flex-row lg:px-30 lg:py-20 h-full">
             <div className="w-96 flex-shrink-0 flex flex-col h-full">
               
-                <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
+                <h1 className="text-[#ffffff] font-bold text-4xl
+                                 lg:text-5xl   lg:mb-3 ">
                   Kenneth Rabina
                 </h1>
-                <p className="text-[#d6d6d6] text-md mb-1">Computer Science Graduate</p>
+                <p className="text-[#d6d6d6] 
+                  lg:text-md mb-1">Computer Science Graduate</p>
                 <p className="text-[#989898] text-xs">Passionate about software development, technology, and creating user-focused applications. Always eager to learn, build, and grow as a developer.</p>
-                <div className="mt-4">
-                  
+                <div className=" flex flex-row 
+                  lg:flex-col lg:mt-4">
                   <PortfolioButton isActive={activeSection === "aboutme"} onClick={() => scrollToSection("aboutme")} >About Me</PortfolioButton>
                   <PortfolioButton isActive={activeSection === "experience"} onClick={() => scrollToSection("experience")}>Experiences</PortfolioButton>
                   <PortfolioButton isActive={activeSection === "projects"} onClick={() => scrollToSection("projects")}>Projects</PortfolioButton>
@@ -154,7 +157,7 @@ export default function Home() {
                 </div>
              
             </div>
-          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full pl-45 no-scrollbar">
+          <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full lg:pl-45 no-scrollbar">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md text-justify">
                   <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
