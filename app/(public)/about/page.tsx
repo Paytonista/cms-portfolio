@@ -119,13 +119,12 @@ export default function Home() {
       });
       
   }, [page]);
-
   return (
     
-    <main className="h-[calc(100vh-5rem)] font-raleway z-2 flex overflow-y-auto" >
+    <main className="h-[calc(100vh-5rem)] font-raleway z-2 overflow-y-auto" >
         <div className="flex flex-row justify-between px-30 py-20 items-start">
-            <div className="sticky top-20 flex flex-col h-[calc(100vh-10rem)] w-96">
-              <div className="flex flex-col" >
+            <div className="sticky top-20 flex flex-col h-full  w-96">
+              <div className="flex flex-col h-full" >
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
                   Kenneth Rabina
                 </h1>
