@@ -120,7 +120,7 @@ const ProjectCard = ({
               
             </div>
             <div className=" text-xs text-gray-600">
-              <p>{details}</p>
+              <p className="text-justify">{details}</p>
             </div>
             <div className="mt-4 flex gap-2">
               {tech_skills.map((tech_skill) =>(

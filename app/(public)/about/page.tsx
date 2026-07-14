@@ -156,7 +156,7 @@ export default function Home() {
             </div>
           <div ref={scrollContainerRef} className="flex-1 flex flex-col max-w-full overflow-y-auto h-full pl-45 no-scrollbar">
             <section id ="aboutme" ref={aboutRef}> 
-              <div className="mb-15 text-md">
+              <div className="mb-15 text-md text-justify">
                   <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
                     and continuously expanding my skills across different areas of technology. I enjoy solving problems through code,
                      exploring new tools and frameworks, and turning ideas into reliable software solutions. 
