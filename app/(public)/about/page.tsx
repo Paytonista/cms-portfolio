@@ -67,13 +67,7 @@ export default function Home() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }), { threshold: 0.2 });
+b  
 
     sections.forEach(section => observer.observe(section));   
 
