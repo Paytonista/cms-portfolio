@@ -126,7 +126,7 @@ export default function Home() {
         <div className="flex flex-col px-5 py-5
                         md:flex-row md:px-20 md:py-15
                         lg:flex-row lg:px-30 lg:py-20 h-full">
-            <div className="w-90 lg:w-96 flex-shrink-0 flex flex-col h-full">
+            <div className="w-full md:w-90 lg:w-96 flex-shrink-0 flex flex-col h-full">
               
                 <h1 className="text-[#ffffff] font-bold text-4xl
                                  lg:text-5xl   lg:mb-3 ">
