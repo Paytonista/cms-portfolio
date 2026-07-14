@@ -7,6 +7,7 @@ import PortfolioButton from "@/app/components/PortfolioButton";
 import ExperienceCard from "@/app/components/ExperienceCard";
 import ProjectCard from "@/app/components/ProjectCard";
 import MouseGlow from "@/app/components/MouseGlow";
+import GridBackground from "@/app/components/GridBackground";
 
 interface Experience {
   id: string;
@@ -184,6 +185,7 @@ export default function Home() {
             </section>
           </div>
         </div>    
+        <GridBackground />
         <MouseGlow />
     </main>
   );
