@@ -11,8 +11,8 @@ export default function GridBackground() {
     const ctx = canvas.getContext("2d")!;
 
     const spacing = 60;
-    const radius = 220;   // how far the distortion reaches
-    const strength = 40;  // how far lines get pushed
+    const radius = 350;   // how far the distortion reaches
+    const strength = 50;  // how far lines get pushed
 
     let raf: number;
 
