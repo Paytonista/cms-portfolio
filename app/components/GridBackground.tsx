@@ -58,7 +58,7 @@ export default function GridBackground() {
       ctx.strokeStyle = "rgba(255,255,255,0.06)";
       ctx.lineWidth = 1;
 
-      const step = 8; // segment resolution — smaller = smoother curves
+      const step = 2; // segment resolution — smaller = smoother curves
 
       // vertical lines
       for (let x = 0; x <= canvas.width; x += spacing) {
