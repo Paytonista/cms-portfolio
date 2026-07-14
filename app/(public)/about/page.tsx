@@ -67,7 +67,13 @@ export default function Home() {
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
-b  
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible) setActiveSection(visible.target.id);
+    }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));   
 
