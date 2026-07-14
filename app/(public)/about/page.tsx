@@ -156,14 +156,22 @@ export default function Home() {
           <div className="flex-1 flex flex-col max-w-full overflow-hidden pl-45">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md">
-                  <p>I’m a frontend engineer with an expertise in building accessible, pixel-perfect user interfaces. I take pride in crafting thoughtful, inclusive products and have a sharp eye for the little details that elevate user experience. I do my best work at the intersection of design and engineering, where great UX meets clean, scalable code.</p>
+                  <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
+                    and continuously expanding my skills across different areas of technology. I enjoy solving problems through code,
+                     exploring new tools and frameworks, and turning ideas into reliable software solutions. 
+                     Whether it's web development, backend systems, or cybersecurity, I'm always eager to learn and take
+                      on new challenges.</p>
                   <br/>
-                  <p>Currently, I'm on the component library team at Klaviyo, where I maintain and evolve the company's design system. I lead engineering efforts across components, tooling, and patterns, partnering closely with designers and engineers to ensure accessibility is built into the foundation of our products.</p>
+                  <p>I have experience developing full-stack applications using modern technologies such as 
+                    React, Next.js, TypeScript, FastAPI, Python, and SQL databases. Through personal and academic 
+                    projects, I've strengthened my understanding of software design, API development, database management, 
+                    and responsive user interfaces while focusing on writing clean, maintainable, and scalable code.</p>
                   <br/>
-                  <p>Currently, I'm on the component library team at Klaviyo, where I maintain and evolve the company's design system. I lead engineering efforts across components, tooling, and patterns, partnering closely with designers and engineers to ensure accessibility is built into the foundation of our products.</p>
+                  <p>I'm currently seeking opportunities in software engineering, 
+                    programming, or cybersecurity where I can contribute, continue learning, 
+                    and grow alongside experienced professionals.</p>
                   <br/>
-                  <p>Currently, I'm on the component library team at Klaviyo, where I maintain and evolve the company's design system. I lead engineering efforts across components, tooling, and patterns, partnering closely with designers and engineers to ensure accessibility is built into the foundation of our products.</p>
-              </div>
+                </div>
             </section>
             <section id ="experience" ref={experienceRef}> 
               <div className="my-10">
