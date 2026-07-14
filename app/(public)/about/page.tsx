@@ -120,7 +120,7 @@ export default function Home() {
 
   return (
     
-    <main className="h-[calc(100vh-5rem)] font-raleway z-2" >
+    <main className="h-[calc(100vh-5rem)] font-raleway z-2 overflow-y-auto" >
         
         <div className="flex flex-row justify-between px-30 py-20">
             <div className="sticky top-20 flex flex-col h-full  w-96">
