@@ -136,7 +136,7 @@ const ProjectCard = ({
         </div>
 
 
-    </div>
+    </motion.div>
   );
 };
 
