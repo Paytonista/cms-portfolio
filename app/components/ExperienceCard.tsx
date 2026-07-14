@@ -48,7 +48,7 @@ const ExperienceCard = ({
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col lg:border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
+        <div className="flex flex-1 flex-col lg:flex-row lg:border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
 
           <div className="flex lg:flex-col items-center gap-2">
             <h2 className="text-lg font-semibold whitespace-nowrap">
