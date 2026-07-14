@@ -122,9 +122,9 @@ export default function Home() {
   return (
     
     <main className="h-[calc(100vh-5rem)] font-raleway z-2 overflow-y-auto" >
-        <div className="flex flex-row justify-between px-30 py-20 items-start">
-            <div className="sticky top-20 flex flex-col h-full  w-96">
-              <div className="flex flex-col h-full" >
+        <div className="grid grid-cols-[24rem_1fr] gap-x-8 px-30 py-20">
+            <div className="sticky top-20 self-start flex flex-col w-96">
+              <div className="flex flex-col h-full">
                 <h1 className="text-5xl font-bold text-[#ffffff] mb-3 ">
                   Kenneth Rabina
                 </h1>
@@ -153,7 +153,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          <div className="flex-1 flex flex-col max-w-full overflow-hidden pl-45">
+          <div className="flex flex-col max-w-full overflow-hidden">
             <section id ="aboutme" ref={aboutRef}> 
               <div className="mb-15 text-md">
                   <p>I'm an aspiring software developer with a strong interest in building practical, user-focused applications 
