@@ -1,6 +1,7 @@
 
 import TechCard ,{ TechCardProps } from "@/app/components/TechCard";
 import {getMonthDifference} from "@/app/utils/date/getmonths"
+import { motion } from "framer-motion";
 
 
 interface ExperienceCardProps {
@@ -29,7 +30,10 @@ const ExperienceCard = ({
   tech_skills: tech_skills
 }: ExperienceCardProps) => {
   return (
-     <div
+     <motion.div
+     initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
       onClick={onClick}
       className="
          flex items-center gap-3 group text-sm m-4 w-full max-w-full p-1
@@ -68,7 +72,7 @@ const ExperienceCard = ({
         </div>
         
       </div>
-    </div>
+    </motion.div>
   );
 };
 
