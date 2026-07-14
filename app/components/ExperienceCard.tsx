@@ -43,16 +43,14 @@ const ExperienceCard = ({
     >
       <div className="flex flex-col lg:flex-row items-start gap-3 p-1 w-full min-w-0">
         <div className="w-37 shrink-0">
-          <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap py-1 text-center ">
-            {start_date?.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {end_date ? end_date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "Active"}
-              
-             
+          <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap text-center ">
+            {start_date?.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {end_date ? end_date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "Active"}       
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
+        <div className="flex flex-1 flex-col lg:border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
 
-          <div className="flex  items-center gap-2">
+          <div className="flex lg:flex-col items-center gap-2">
             <h2 className="text-lg font-semibold whitespace-nowrap">
               {role}
             </h2>
