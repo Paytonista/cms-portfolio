@@ -2,6 +2,7 @@ import { useState, Fragment} from "react";
 import TechCard , {TechCardProps}from "@/app/components/TechCard";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   onClick?: () => void;
@@ -37,7 +38,11 @@ const ProjectCard = ({
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+
       onClick={onClick ? onClick : () => setOpen(!isOpen)}
       className="
         relative flex items-center gap-3 group text-sm m-4 w-full
