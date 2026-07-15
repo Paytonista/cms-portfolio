@@ -42,7 +42,7 @@ const ExperienceCard = ({
       "
     >
       <div className="flex flex-col lg:flex-row items-start gap-3 w-full min-w-0">
-        <div className=" lg:w-37 shrink-0">
+        <div className="lg:w-37 shrink-0">
           <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap text-center ">
             {start_date?.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {end_date ? end_date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "Active"}       
           </div>

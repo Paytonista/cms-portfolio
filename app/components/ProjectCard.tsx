@@ -54,7 +54,7 @@ const ProjectCard = ({
             e.stopPropagation();
           }}
         className={`
-          fixed inset-0 z-50 backdrop-blur-md flex items-center justify-center
+          fixed inset-0 z-50 overflow-hidden backdrop-blur-md flex items-center justify-center
           transition-all duration-300 ease-in-out
           ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}
         `}
@@ -83,7 +83,7 @@ const ProjectCard = ({
             key={tooltip_images[currentIndex]}
             src={tooltip_images[currentIndex]}
             loading="lazy"
-            className="max-w-4xl aspect-video  relative z-51"
+            className="max-w-[90vw] max-h-[80vh] w-auto h-auto object-contain relative z-51"
           />
         )}
 
