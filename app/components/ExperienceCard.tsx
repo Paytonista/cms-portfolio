@@ -36,29 +36,29 @@ const ExperienceCard = ({
       transition={{ duration: 0.6 }}
       onClick={onClick}
       className="
-        flex items-center gap-3 group text-sm sm:m-1 lg:m-4 w-full max-w-full p-1
+        flex items-center gap-3 group text-sm sm:m-1 lg:m-4 w-full max-w-full
         transition-all duration-100
         border border-transparent rounded-sm hover:shadow-2xl hover:cursor-pointer hover:bg-[#072037] hover:border-gray-800
       "
     >
       <div className="flex flex-col lg:flex-row items-start gap-3 w-full min-w-0">
         <div className="lg:w-37 shrink-0">
-          <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap text-center ">
+          <div className="flex flex-col text-xs text-gray-400 whitespace-nowrap text-center order-2">
             {start_date?.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })} - {end_date ? end_date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "Active"}       
           </div>
         </div>
 
-        <div className="flex flex-1 flex-col lg:border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
+        <div className="flex flex-1 flex-col lg:border-l border-gray-300 lg:pl-6 min-w-0">
           <div className="flex flex-col lg:flex-row gap-2 min-w-0">
-            <h2 className="text-sm lg:text-lg font-semibold truncate">
+            <h2 className="text-sm lg:text-lg font-semibold truncate order-0">
               {role}
             </h2>
-            <a href="https://www.klaviyo.com/" target="_blank" className="text-xs text-gray-400 whitespace-nowrap items-center">
+            <a href="https://www.klaviyo.com/" target="_blank" className="text-xs text-gray-400 whitespace-nowrap items-center order-1">
               {tech_company}
             </a>
           </div>
           <div className="mt-2 text-gray-600">
-            <p className="line-clamp-4 break-words text-xs lg:text-xs text-justify">{job_description}</p>
+            <p className="line-clamp-4 break-words text-xs lg:text-xs text-justify order-3">{job_description}</p>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             {tech_skills.map((tech_skill) => (
