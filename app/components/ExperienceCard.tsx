@@ -53,7 +53,7 @@ const ExperienceCard = ({
             <h2 className="text-sm lg:text-lg font-semibold truncate">
               {role}
             </h2>
-            <a href="https://www.klaviyo.com/" target="_blank" className="text-xs text-gray-400 whitespace-nowrap">
+            <a href="https://www.klaviyo.com/" target="_blank" className="text-xs text-gray-400 whitespace-nowrap items-center">
               {tech_company}
             </a>
           </div>
