@@ -102,8 +102,8 @@ const ProjectCard = ({
       </div>
         
         
-        <div className="flex items-start  gap-6 p-6 w-full min-w-0 ">
-          <div className="w-28 md:w-38 lg:w-48 max-w-xl aspect-video border shrink-0">
+        <div className="flex items-start lg:flex-col  gap-6 p-6 w-full min-w-0 ">
+          <div className="w-28 md:w-38 lg:w-48 max-w-xl aspect-video lg:border shrink-0">
             <img
               src={highlight_image}
               className="w-full h-full object-cover"
