@@ -137,9 +137,9 @@ export default function Home() {
                 <p className="text-[#989898] text-xs">Passionate about software development, technology, and creating user-focused applications. Always eager to learn, build, and grow as a developer.</p>
                 <div className=" flex flex-row order-2 w-full 
                   lg:flex-col lg:mt-4 lg:order-1">
-                  <PortfolioButton className="flex-1" isActive={activeSection === "aboutme"} onClick={() => scrollToSection("aboutme")} >About Me</PortfolioButton>
-                  <PortfolioButton className="flex-1" isActive={activeSection === "experience"} onClick={() => scrollToSection("experience")}>Experiences</PortfolioButton>
-                  <PortfolioButton className="flex-1" isActive={activeSection === "projects"} onClick={() => scrollToSection("projects")}>Projects</PortfolioButton>
+                  <PortfolioButton className="flex flex-1 items-center justify-center" isActive={activeSection === "aboutme"} onClick={() => scrollToSection("aboutme")} >About Me</PortfolioButton>
+                  <PortfolioButton className="flex flex-1 items-center justify-center" isActive={activeSection === "experience"} onClick={() => scrollToSection("experience")}>Experiences</PortfolioButton>
+                  <PortfolioButton className="flex flex-1 items-center justify-center" isActive={activeSection === "projects"} onClick={() => scrollToSection("projects")}>Projects</PortfolioButton>
                 </div>
                 <div className="order-1
                 lg:mt-50 lg:order-2">
