@@ -8,6 +8,8 @@ import ExperienceCard from "@/app/components/ExperienceCard";
 import ProjectCard from "@/app/components/ProjectCard";
 import MouseGlow from "@/app/components/MouseGlow";
 import GridBackground from "@/app/components/GridBackground";
+import { User, Briefcase, FolderKanban } from "lucide-react";
+
 
 interface Experience {
   id: string;
@@ -135,11 +137,32 @@ export default function Home() {
                 <p className="text-[#d6d6d6] 
                   lg:text-md mb-1">Computer Science Graduate</p>
                 <p className="text-[#989898] text-xs">Passionate about software development, technology, and creating user-focused applications. Always eager to learn, build, and grow as a developer.</p>
-                <div className=" flex flex-row order-2 w-full
-                  lg:flex-col lg:mt-4 lg:order-1">
-                  <PortfolioButton className="flex-1" isActive={activeSection === "aboutme"} onClick={() => scrollToSection("aboutme")} >About Me</PortfolioButton>
-                  <PortfolioButton className="flex-1" isActive={activeSection === "experience"} onClick={() => scrollToSection("experience")}>Experiences</PortfolioButton>
-                  <PortfolioButton className="flex-1" isActive={activeSection === "projects"} onClick={() => scrollToSection("projects")}>Projects</PortfolioButton>
+                <div className="flex flex-row order-2 w-full rounded-lg overflow-hidden border border-white/10 bg-white/5
+                lg:flex-col lg:mt-4 lg:order-1 lg:rounded-none lg:border-0 lg:bg-transparent">
+                  <PortfolioButton
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2 border-r border-white/10 lg:border-r-0"
+                    isActive={activeSection === "aboutme"}
+                    onClick={() => scrollToSection("aboutme")}
+                  >
+                    <User size={14} />
+                    About Me
+                  </PortfolioButton>
+                  <PortfolioButton
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2 border-r border-white/10 lg:border-r-0"
+                    isActive={activeSection === "experience"}
+                    onClick={() => scrollToSection("experience")}
+                  >
+                    <Briefcase size={14} />
+                    Experiences
+                  </PortfolioButton>
+                  <PortfolioButton
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2"
+                    isActive={activeSection === "projects"}
+                    onClick={() => scrollToSection("projects")}
+                  >
+                    <FolderKanban size={14} />
+                    Projects
+                  </PortfolioButton>
                 </div>
                 <div className="order-1
                 lg:mt-50 lg:order-2">
