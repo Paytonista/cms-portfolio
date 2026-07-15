@@ -50,8 +50,8 @@ const ExperienceCard = ({
 
         <div className="flex flex-1 flex-col lg:border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
 
-          <div className="flex flex-row items-center gap-2">
-            <h2 className="text-sm lg:text-lg font-semibold whitespace-nowrap">
+          <div className="flex flex-row items-center gap-2 min-w-0">
+            <h2 className="text-sm lg:text-lg font-semibold truncate">
               {role}
             </h2>
             <a href="https://www.klaviyo.com/" target="_blank" className="text-xs text-gray-400 whitespace-nowrap">
