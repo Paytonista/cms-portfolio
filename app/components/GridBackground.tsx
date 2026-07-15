@@ -6,6 +6,7 @@ interface Wave {
   x: number;
   y: number;
   startTime: number;
+  kind: "click" | "move";
 }
 
 interface Light {
@@ -20,6 +21,7 @@ export default function GridBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const wavesRef = useRef<Wave[]>([]);
+  const lastMoveWaveRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
@@ -29,11 +31,18 @@ export default function GridBackground() {
     const radius = 350;
     const strength = 50;
 
-    // wave tuning
+    // click wave tuning
     const waveSpeed = 500;      // px per second the ring expands
     const waveLife = 1500;      // ms before a wave fully fades
     const waveWidth = 120;      // thickness of the ripple band
     const waveStrength = 60;    // max push from a wave
+
+    // mouse-move wave tuning (lighter, quicker, more frequent)
+    const moveWaveSpeed = 400;
+    const moveWaveLife = 800;
+    const moveWaveWidth = 70;
+    const moveWaveStrength = 22;
+    const moveWaveInterval = 70; // ms between spawns while moving
 
     //light tuning
     const maxLights = 10;
@@ -52,6 +61,17 @@ export default function GridBackground() {
 
     const handleMove = (e: PointerEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
+
+      const now = performance.now();
+      if (now - lastMoveWaveRef.current > moveWaveInterval) {
+        lastMoveWaveRef.current = now;
+        wavesRef.current.push({
+          x: e.clientX,
+          y: e.clientY,
+          startTime: now,
+          kind: "move",
+        });
+      }
     };
     window.addEventListener("pointermove", handleMove);
 
@@ -60,6 +80,7 @@ export default function GridBackground() {
         x: e.clientX,
         y: e.clientY,
         startTime: performance.now(),
+        kind: "click",
       });
     };
     window.addEventListener("pointerdown", handleClick);
@@ -87,29 +108,35 @@ export default function GridBackground() {
       return { x: Math.cos(angle) * force, y: Math.sin(angle) * force };
     };
 
-    // click ripple push
+    // click ripple + move ripple push
     const waveDistort = (x: number, y: number, now: number) => {
       let totalX = 0;
       let totalY = 0;
 
       for (const wave of wavesRef.current) {
+        const isMove = wave.kind === "move";
+        const life = isMove ? moveWaveLife : waveLife;
+        const speed = isMove ? moveWaveSpeed : waveSpeed;
+        const width = isMove ? moveWaveWidth : waveWidth;
+        const strengthForKind = isMove ? moveWaveStrength : waveStrength;
+
         const age = now - wave.startTime;
-        if (age < 0 || age > waveLife) continue;
+        if (age < 0 || age > life) continue;
 
         const dx = x - wave.x;
         const dy = y - wave.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        const ringRadius = (age / 1000) * waveSpeed;
+        const ringRadius = (age / 1000) * speed;
         const distFromRing = Math.abs(dist - ringRadius);
-        if (distFromRing > waveWidth) continue;
+        if (distFromRing > width) continue;
 
-        // band falloff: strongest right at the ring, fading over waveWidth
-        const bandFalloff = 1 - distFromRing / waveWidth;
+        // band falloff: strongest right at the ring, fading over the width
+        const bandFalloff = 1 - distFromRing / width;
         // life falloff: ring weakens as it ages
-        const lifeFalloff = 1 - age / waveLife;
+        const lifeFalloff = 1 - age / life;
 
-        const force = bandFalloff * lifeFalloff * waveStrength;
+        const force = bandFalloff * lifeFalloff * strengthForKind;
         if (dist === 0 || force <= 0) continue;
 
         const angle = Math.atan2(dy, dx);
@@ -136,10 +163,11 @@ export default function GridBackground() {
     };
 
     const render = (now: number) => {
-      // drop dead waves
-      wavesRef.current = wavesRef.current.filter(
-        (w) => now - w.startTime < waveLife
-      );
+      // drop dead waves (each kind has its own lifespan)
+      wavesRef.current = wavesRef.current.filter((w) => {
+        const life = w.kind === "move" ? moveWaveLife : waveLife;
+        return now - w.startTime < life;
+      });
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.strokeStyle = "rgba(255,255,255,0.06)";
