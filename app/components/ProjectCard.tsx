@@ -109,7 +109,7 @@ const ProjectCard = ({
             
           </div>
 
-          <div className="flex-1 flex-col min-w-0 lg:border-l border-gray-300 lg:ml-1">
+          <div className="flex-1 flex-col min-w-0 lg:border-l border-gray-300 lg:pl-3">
 
             <div className="flex items-center gap-2">
               <h2 className="text-lg font-semibold truncate order-1 lg:order-2">
