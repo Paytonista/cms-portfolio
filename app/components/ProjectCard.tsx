@@ -101,7 +101,7 @@ const ProjectCard = ({
         
       </div>
         <div className="flex items-center lg:items-start flex-col lg:flex-row gap-6 lg:p-6 w-full min-w-0 ">
-          <div className="w-58 md:w-38 lg:w-48 max-w-xl aspect-video shrink-0">
+          <div className="w-58 md:w-38 lg:w-48 max-w-xl aspect-video shrink-0 order-3">
             <img
               src={highlight_image}
               className="w-full h-full object-cover"
@@ -112,7 +112,7 @@ const ProjectCard = ({
           <div className="flex-1 flex-col min-w-0 lg:border-l border-gray-300 pl-6">
 
             <div className="flex items-center gap-2">
-              <h2 className="text-md font-semibold truncate">
+              <h2 className="text-md font-semibold truncate order-1">
                 {project_name}
               </h2>
               
@@ -120,7 +120,7 @@ const ProjectCard = ({
             <div className=" text-xs text-gray-600">
               <p className="text-justify break-words">{details}</p>
             </div>
-            <div className="mt-4 flex gap-2 flex-wrap">
+            <div className="mt-2 flex gap-2 flex-wrap order-2">
               {tech_skills.map((tech_skill) =>(
                 <TechCard key={tech_skill.TechnologyName} {...tech_skill}/>
               ))}
