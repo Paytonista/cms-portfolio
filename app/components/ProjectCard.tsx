@@ -113,12 +113,12 @@ const ProjectCard = ({
           <div className="flex-1 flex-col min-w-0 lg:border-l border-gray-300 lg:pl-3">
 
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-semibold truncate order-1 lg:order-2">
+              <h2 className="text-md font-semibold truncate order-1 lg:order-2">
                 {project_name}
               </h2>
               
             </div>
-            <div className="text-sm lg:text-xs text-gray-500">
+            <div className="text-xs text-gray-500">
               <p className="text-justify break-words">{details}</p>
             </div>
             <div className="mt-2 flex gap-2 flex-wrap order-2 lg:order-3">
