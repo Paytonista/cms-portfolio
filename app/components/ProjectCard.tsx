@@ -128,7 +128,7 @@ const ProjectCard = ({
             </div>
           </div>  
         </div>
-        <hr className="lg:w-full lg:border-t lg:border-gray-300 lg:my-2"/>
+        <hr className="w-full border-t border-gray-300 my-2 lg:hidden" />
 
 
     </motion.div>
