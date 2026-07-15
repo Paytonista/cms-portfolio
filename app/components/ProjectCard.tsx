@@ -45,8 +45,11 @@ const ProjectCard = ({
       onClick={onClick ? onClick : () => setOpen(!isOpen)}
       className="
         relative flex items-center gap-3 group text-sm lg:m-4 w-full
+        border-b
+        border-t
         transition-all duration-100
         hover:shadow-lg 
+        my-4
         cursor-pointer      
       "
     > <div
