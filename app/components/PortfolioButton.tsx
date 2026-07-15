@@ -3,14 +3,13 @@ import { ButtonHTMLAttributes } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
   isActive?: boolean;
-  onclick?: () => void;
 }
 
 const PortfolioButton = ({
   variant,
   isActive = false,
   children,
-  onclick,
+  className,
   ...props
 }: ButtonProps) => {
   return (
@@ -20,6 +19,7 @@ const PortfolioButton = ({
         relative py-2 flex items-center gap-3 group text-sm
         transition-all duration-300
         ${isActive ? "scale-110 font-semibold" : "scale-100"}
+        ${className ?? ""}
       `}
     >
       {/* desktop indicator (left of text) */}
