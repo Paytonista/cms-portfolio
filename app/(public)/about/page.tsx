@@ -187,12 +187,12 @@ export default function Home() {
                     <ExperienceCard key={experience.id} {...experience}></ExperienceCard>
                 ))}
 
-                <p><a href="/resume/rabina_kenneth_c_resume1.pdf" target="_blank" rel="noreferrer">View Resume</a></p>
+                <p className="my-3"><a href="/resume/rabina_kenneth_c_resume1.pdf" target="_blank" rel="noreferrer">View Resume</a></p>
               </div>
             </section>
 
             <section id="projects" ref={projectsRef}>
-              <div className="my-10">
+              <div className="lg:my-10">
                 {projects.map((project) => (
                   <ProjectCard key={project.project_name} {...project} />
                 ))}

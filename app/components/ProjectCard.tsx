@@ -44,7 +44,7 @@ const ProjectCard = ({
       transition={{ duration: 0.6 }}
       onClick={onClick ? onClick : () => setOpen(!isOpen)}
       className="
-        relative flex items-center gap-3 group text-sm m-4 w-full
+        relative flex items-center gap-3 group text-sm lg:m-4 w-full
         transition-all duration-100
         hover:shadow-lg 
         cursor-pointer      
