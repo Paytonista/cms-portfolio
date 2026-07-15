@@ -117,7 +117,7 @@ const ProjectCard = ({
               </h2>
               
             </div>
-            <div className=" text-xs text-gray-800">
+            <div className=" text-xs text-gray-500">
               <p className="text-justify break-words">{details}</p>
             </div>
             <div className="mt-2 flex gap-2 flex-wrap order-2 lg:order-3">
