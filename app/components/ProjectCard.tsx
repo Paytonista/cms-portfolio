@@ -101,7 +101,7 @@ const ProjectCard = ({
         
       </div>
         <div className="flex items-center lg:items-start flex-col lg:flex-row gap-6 lg:p-6 w-full min-w-0 ">
-          <div className="w-58 md:w-38 lg:w-48 max-w-xl aspect-video shrink-0 order-3 lg:order-1">
+          <div className="w-78 md:w-38 lg:w-48 max-w-xl aspect-video shrink-0 order-3 lg:order-1">
             <img
               src={highlight_image}
               className="w-full h-full object-cover"
