@@ -49,7 +49,7 @@ const ExperienceCard = ({
         </div>
 
         <div className="flex flex-1 flex-col lg:border-l border-gray-300 pl-1 lg:pl-6 min-w-0">
-          <div className="flex flex-row lg:flex-col items-center gap-2 min-w-0">
+          <div className="flex flex-col items-center gap-2 min-w-0">
             <h2 className="text-sm lg:text-lg font-semibold truncate">
               {role}
             </h2>
@@ -58,7 +58,7 @@ const ExperienceCard = ({
             </a>
           </div>
           <div className="mt-2 text-gray-600">
-            <p className="line-clamp-4 truncate text-xs lg:text-xs">{job_description}</p>
+            <p className="line-clamp-4 break-words text-xs lg:text-xs">{job_description}</p>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
             {tech_skills.map((tech_skill) => (
